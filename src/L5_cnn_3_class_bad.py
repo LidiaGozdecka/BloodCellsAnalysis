@@ -12,7 +12,7 @@ from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropou
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 import random
-SEED = 42
+SEED = 2026
 random.seed(SEED)
 np.random.seed(SEED)
 tf.random.set_seed(SEED)

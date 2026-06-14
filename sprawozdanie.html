@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sprawozdanie – BloodCellsAnalysis</title>
+<style>
+  :root {
+    --accent: #2563eb;
+    --accent2: #7c3aed;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --border: #e2e8f0;
+    --text: #1e293b;
+    --muted: #64748b;
+    --good: #16a34a;
+    --warn: #d97706;
+    --bad: #dc2626;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+  .container { max-width: 960px; margin: 0 auto; padding: 40px 24px 80px; }
+
+  h1 { font-size: 2rem; font-weight: 800; color: var(--accent); margin-bottom: 6px; }
+  h2 { font-size: 1.4rem; font-weight: 700; margin: 40px 0 14px; padding-bottom: 8px;
+       border-bottom: 3px solid var(--accent); color: var(--text); }
+  h3 { font-size: 1.1rem; font-weight: 600; margin: 24px 0 10px; color: var(--accent2); }
+  h4 { font-size: 1rem; font-weight: 600; margin: 16px 0 8px; }
+  p { margin-bottom: 12px; }
+  ul, ol { margin: 8px 0 14px 24px; }
+  li { margin-bottom: 4px; }
+
+  .meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 32px; }
+  .meta span { margin-right: 20px; }
+
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+          padding: 20px 24px; margin-bottom: 20px; }
+  .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+  @media(max-width:600px){ .card-grid { grid-template-columns: 1fr; } }
+
+  .badge { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 0.78rem;
+           font-weight: 600; margin: 0 4px 4px 0; }
+  .badge-blue { background: #dbeafe; color: #1d4ed8; }
+  .badge-green { background: #dcfce7; color: #15803d; }
+  .badge-red { background: #fee2e2; color: #b91c1c; }
+  .badge-orange { background: #ffedd5; color: #c2410c; }
+
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.92rem; }
+  th { background: #f1f5f9; font-weight: 600; padding: 10px 12px; text-align: left;
+       border: 1px solid var(--border); }
+  td { padding: 9px 12px; border: 1px solid var(--border); }
+  tr:nth-child(even) td { background: #f8fafc; }
+  .best { background: #dcfce7 !important; font-weight: 600; }
+
+  .code { background: #1e293b; color: #e2e8f0; border-radius: 8px; padding: 16px 20px;
+          font-family: 'Consolas','Courier New',monospace; font-size: 0.85rem;
+          overflow-x: auto; margin: 12px 0; white-space: pre; }
+  .code .kw { color: #93c5fd; }
+  .code .cm { color: #64748b; font-style: italic; }
+  .code .st { color: #86efac; }
+  .code .nm { color: #fde68a; }
+
+  .metric-row { display: flex; gap: 16px; flex-wrap: wrap; margin: 16px 0; }
+  .metric { flex: 1; min-width: 130px; background: var(--card); border: 1px solid var(--border);
+            border-radius: 10px; padding: 16px; text-align: center; }
+  .metric .val { font-size: 1.9rem; font-weight: 800; color: var(--accent); }
+  .metric .lbl { font-size: 0.78rem; color: var(--muted); margin-top: 4px; }
+
+  .alert { border-left: 4px solid; border-radius: 6px; padding: 12px 16px; margin: 16px 0; }
+  .alert-warn { border-color: var(--warn); background: #fffbeb; }
+  .alert-info { border-color: var(--accent); background: #eff6ff; }
+  .alert-good { border-color: var(--good); background: #f0fdf4; }
+
+  .section-num { display: inline-block; background: var(--accent); color: white;
+                 border-radius: 50%; width: 28px; height: 28px; text-align: center;
+                 line-height: 28px; font-weight: 700; font-size: 0.85rem; margin-right: 8px; }
+
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+         padding: 20px 24px; margin-bottom: 36px; }
+  .toc ol { margin-left: 20px; }
+  .toc li { margin-bottom: 6px; }
+  .toc a { color: var(--accent); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+
+  .pipeline { display: flex; gap: 0; margin: 20px 0; flex-wrap: wrap; }
+  .pipe-step { flex: 1; min-width: 100px; text-align: center; padding: 12px 8px;
+               background: var(--card); border: 1px solid var(--border); position: relative; }
+  .pipe-step:not(:last-child)::after { content: '→'; position: absolute; right: -14px;
+    top: 50%; transform: translateY(-50%); font-size: 1.2rem; color: var(--accent); z-index:1; }
+  .pipe-step .ps-num { font-weight: 800; color: var(--accent); font-size: 1.1rem; }
+  .pipe-step .ps-lbl { font-size: 0.75rem; color: var(--muted); margin-top: 4px; }
+
+  hr { border: none; border-top: 1px solid var(--border); margin: 36px 0; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <h1>🔬 Automatyczna Analiza Obrazu</h1>
+  <h1 style="font-size:1.5rem;margin-top:4px;color:#334155;">Klasyfikacja Leukocytów z Obrazów Mikroskopowych</h1>
+  <div class="meta">
+    <span>👤 Lidia Gozdecka</span>
+    <span>📅 2024/2025, semestr 6</span>
+    <span>🗂 Projekt indywidualny (L1, L2, L3, L5)</span>
+    <span>📦 <a href="https://github.com/LidiaGozdecka/BloodCellsAnalysis" style="color:var(--accent)">GitHub</a></span>
+  </div>
+
+  <!-- TOC -->
+  <div class="toc">
+    <strong>Spis treści</strong>
+    <ol style="margin-top:10px">
+      <li><a href="#s1">Opis projektu i motywacja</a></li>
+      <li><a href="#s2">Zbiór danych i analiza wstępna</a></li>
+      <li><a href="#l1">L1 – Akwizycja i dyskretyzacja obrazów</a></li>
+      <li><a href="#l2">L2 – Podstawowe algorytmy obróbki obrazów</a></li>
+      <li><a href="#l3">L3 – Pomiary parametrów obiektów (klasyczne CV)</a></li>
+      <li><a href="#l5">L5 – Konwolucyjna sieć neuronowa (CNN)</a>
+        <ol style="margin-top:6px">
+          <li><a href="#l5-arch">Architektura i augmentacja</a></li>
+          <li><a href="#l5-m1">Model 1: Naiwny (unweighted)</a></li>
+          <li><a href="#l5-m2">Model 2: Ważony (weighted)</a></li>
+          <li><a href="#l5-m3">Model 3: 3-klasowy z oversamplingiem</a></li>
+          <li><a href="#l5-m4">Model 4: Transfer learning MobileNetV2</a></li>
+        </ol>
+      </li>
+      <li><a href="#compare">Porównanie wszystkich podejść</a></li>
+      <li><a href="#wnioski">Wnioski końcowe i ograniczenia</a></li>
+    </ol>
+  </div>
+
+  <!-- S1 -->
+  <h2 id="s1"><span class="section-num">1</span>Opis projektu i motywacja</h2>
+  <p>Celem projektu jest automatyczna klasyfikacja typów białych krwinek (leukocytów) na podstawie obrazów mikroskopowych barwionych metodą May-Grünwalda-Giemsy. W diagnostyce hematologicznej prawidłowe różnicowanie leukocytów jest kluczowe dla wykrywania chorób takich jak białaczka, zakażenia bakteryjne czy reakcje alergiczne.</p>
+  <p>Projekt realizuje dwie ścieżki analityczne: <strong>klasyczne metody Computer Vision</strong> (segmentacja, ekstrakcja cech geometrycznych, klasyfikacja regułowa) oraz <strong>głębokie uczenie maszynowe</strong> (CNN). Konfrontacja obu podejść pozwala ocenić, kiedy proste reguły wystarczają, a kiedy wymagana jest siła sieci neuronowej.</p>
+
+  <div class="pipeline">
+    <div class="pipe-step"><div class="ps-num">L1</div><div class="ps-lbl">Akwizycja i dyskretyzacja</div></div>
+    <div class="pipe-step"><div class="ps-num">L2</div><div class="ps-lbl">Filtry i obróbka</div></div>
+    <div class="pipe-step"><div class="ps-num">L3</div><div class="ps-lbl">Segmentacja i reguły</div></div>
+    <div class="pipe-step"><div class="ps-num">L5</div><div class="ps-lbl">CNN × 4 modele</div></div>
+    <div class="pipe-step"><div class="ps-num">📊</div><div class="ps-lbl">Porównanie i wnioski</div></div>
+  </div>
+
+  <!-- S2 -->
+  <h2 id="s2"><span class="section-num">2</span>Zbiór danych i analiza wstępna</h2>
+  <p><strong>Źródło:</strong> <a href="https://www.kaggle.com/datasets/paultimothymooney/blood-cells/data" style="color:var(--accent)">Blood Cell Images – Kaggle (Paul Mooney)</a></p>
+  <p>Zbiór zawiera obrazy mikroskopowe białych krwinek (WBC) w rozdzielczości 320×240 px, format JPEG, etykiety w pliku <code>labels.csv</code>.</p>
+
+  <h3>Rozkład klas</h3>
+  <table>
+    <tr><th>Klasa</th><th>Liczba próbek</th><th>Udział</th><th>Uwagi</th></tr>
+    <tr><td>NEUTROPHIL</td><td>237</td><td>~63%</td><td>Klasa dominująca – główne źródło problemu niezbalansowania</td></tr>
+    <tr><td>EOSINOPHIL</td><td>88</td><td>~23%</td><td>Dobrze reprezentowana</td></tr>
+    <tr><td>MONOCYTE</td><td>39</td><td>~10%</td><td>Niedoreprezentowana</td></tr>
+    <tr><td>LYMPHOCYTE</td><td>33</td><td>~9%</td><td>Niedoreprezentowana (po L3: tylko 2 wykryte!)</td></tr>
+    <tr><td>BASOPHIL</td><td>3</td><td>&lt;1%</td><td>⚠️ Wykluczona – niemożliwy stratyfikowany podział</td></tr>
+  </table>
+
+  <div class="alert alert-warn">
+    <strong>⚠️ Problem niezbalansowania klas</strong><br>
+    Neutrofile stanowią ponad 63% zbioru. Naiwny model CNN może osiągnąć ~60% accuracy, klasyfikując <em>wszystko</em> jako neutrofil – bez żadnej rzeczywistej wiedzy o innych klasach. Rozwiązania zastosowane w projekcie: wagi klas, oversampling, fuzja klas biologicznych.
+  </div>
+
+  <h3>Podział danych (L5)</h3>
+  <table>
+    <tr><th>Zbiór</th><th>Liczba obrazów</th><th>Udział</th></tr>
+    <tr><td>Treningowy</td><td>242</td><td>~70%</td></tr>
+    <tr><td>Walidacyjny</td><td>52</td><td>~15%</td></tr>
+    <tr><td>Testowy</td><td>53</td><td>~15%</td></tr>
+  </table>
+
+  <!-- L1 -->
+  <h2 id="l1"><span class="section-num">3</span>L1 – Akwizycja i dyskretyzacja obrazów</h2>
+
+  <h3>Źródło danych i wczytanie</h3>
+  <p>Obrazy wczytywane są przy użyciu biblioteki <strong>OpenCV</strong> (cv2). OpenCV domyślnie odczytuje obrazy w formacie BGR (Blue–Green–Red), co wymaga konwersji przed wizualizacją.</p>
+
+  <div class="code"><span class="kw">import</span> cv2
+<span class="kw">import</span> matplotlib.pyplot <span class="kw">as</span> plt
+<span class="kw">import</span> os
+
+img_bgr = cv2.imread(image_path)
+
+<span class="cm"># Konwersje przestrzeni barw</span>
+img_rgb  = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2RGB)   <span class="cm"># Do wyświetlania</span>
+img_gray = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2GRAY)  <span class="cm"># Skala szarości</span>
+img_hsv  = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2HSV)   <span class="cm"># Hue-Saturation-Value</span></div>
+
+  <h3>Przestrzenie barw – uzasadnienie wyboru</h3>
+  <div class="card-grid">
+    <div class="card">
+      <h4>RGB</h4>
+      <p>Standardowa reprezentacja do wyświetlania i wstępnej analizy. Używana jako wejście do sieci CNN (3 kanały).</p>
+    </div>
+    <div class="card">
+      <h4>Skala szarości</h4>
+      <p>Redukuje wymiarowość, używana do histogramów intensywności, filtrowania i progowania w L2/L3.</p>
+    </div>
+    <div class="card">
+      <h4>HSV</h4>
+      <p>Kanał Hue pozwala izolować barwy charakterystyczne: fioletowy odcień jąder komórkowych oraz różowo-czerwone ziarnistości eozynofilów. Kluczowy w klasyfikacji regułowej (L3).</p>
+    </div>
+  </div>
+
+  <h3>Dyskretyzacja</h3>
+  <p><strong>Kwantyzacja:</strong> redukcja liczby odcieni szarości z 256 do 4 poziomów przez dzielenie całkowitoliczbowe i przemnożenie.</p>
+  <p><strong>Próbkowanie:</strong> zmniejszenie rozdzielczości 10-krotnie metodą <code>INTER_NEAREST</code> (bez interpolacji), co pozwala zobaczyć efekt utraty informacji przestrzennej.</p>
+
+  <div class="code"><span class="cm"># Kwantyzacja: 256 → 4 poziomy</span>
+poziomy = <span class="nm">4</span>
+mnoznik = <span class="nm">256</span> // poziomy
+img_quantized = (img_gray // mnoznik) * mnoznik
+
+<span class="cm"># Próbkowanie: zmniejszenie 10×</span>
+height, width = img_gray.shape
+img_sampled = cv2.resize(img_gray, (width//<span class="nm">10</span>, height//<span class="nm">10</span>),
+                         interpolation=cv2.INTER_NEAREST)</div>
+
+  <h3>Analiza histogramów</h3>
+  <p>Histogramy intensywności przed i po kwantyzacji pokazują skupienie wartości pikseli w 4 dyskretnych skupiskach (0, 64, 128, 192). Oryginalny histogram ma rozkład bimodalny – ciemne jądra komórkowe tworzą lewy szczyt, jasne tło i cytoplazma – prawy.</p>
+
+  <div class="alert alert-info">
+    <strong>Parametry akwizycji:</strong> Rozdzielczość: 320×240 px | Głębia bitowa: uint8 (8 bit/kanał) | Format: JPEG | Przestrzeń wyjściowa modeli: RGB 128×128 px (po przeskalowaniu)
+  </div>
+
+  <!-- L2 -->
+  <h2 id="l2"><span class="section-num">4</span>L2 – Podstawowe algorytmy obróbki obrazów</h2>
+
+  <h3>Zastosowane filtry</h3>
+  <table>
+    <tr><th>Filtr</th><th>Parametry</th><th>Cel zastosowania</th><th>Wynik</th></tr>
+    <tr><td>Gaussa</td><td>maska 5×5, σ=auto</td><td>Wygładzenie, redukcja szumów</td><td>Rozmazanie krawędzi, poprawa robustności progowania</td></tr>
+    <tr><td>Sobela</td><td>ksize=3, kierunki X+Y</td><td>Detekcja krawędzi komórek</td><td>Wyodrębnienie konturów jąder i błon komórkowych</td></tr>
+    <tr><td>Progowanie Otsu</td><td>THRESH_BINARY_INV</td><td>Segmentacja – binaryzacja</td><td>Tło czarne, komórki białe – gotowe do L3</td></tr>
+  </table>
+
+  <div class="code"><span class="cm"># Filtr Gaussa – wygładzenie</span>
+img_blur = cv2.GaussianBlur(img_gray, (<span class="nm">5</span>, <span class="nm">5</span>), <span class="nm">0</span>)
+
+<span class="cm"># Filtr Sobela – krawędzie</span>
+sobel_x = cv2.Sobel(img_blur, cv2.CV_64F, <span class="nm">1</span>, <span class="nm">0</span>, ksize=<span class="nm">3</span>)
+sobel_y = cv2.Sobel(img_blur, cv2.CV_64F, <span class="nm">0</span>, <span class="nm">1</span>, ksize=<span class="nm">3</span>)
+img_sobel = cv2.magnitude(sobel_x, sobel_y)
+
+<span class="cm"># Progowanie Otsu – automatyczny próg</span>
+_, img_thresh = cv2.threshold(img_blur, <span class="nm">0</span>, <span class="nm">255</span>,
+                              cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)</div>
+
+  <h3>Uzasadnienie kolejności filtrów</h3>
+  <p>Gaussian → Sobel → Otsu to standardowy pipeline preprocessing. Wygładzenie Gaussa <em>przed</em> Sobelem jest kluczowe – Sobel jest wrażliwy na szum (oblicza pochodne, które wzmacniają losowe fluktuacje pikseli). Progowanie Otsu działa na wygładzonej wersji obrazu, co daje stabilniejszy próg binaryzacji niż na obrazie surowym.</p>
+
+  <h3>Kiedy który algorytm sprawdza się najlepiej</h3>
+  <ul>
+    <li><strong>Gauss:</strong> gdy obraz jest zaszumiony lub przed operacjami wymagającymi gładkich gradientów.</li>
+    <li><strong>Sobel:</strong> gdy interesują nas krawędzie i kontury – szczególnie przydatny do wstępnej detekcji obiektów komórkowych.</li>
+    <li><strong>Otsu:</strong> gdy histogram ma wyraźnie bimodalny charakter (ciemne obiekty na jasnym tle) – automatycznie wyznacza optymalny próg bez ręcznego doboru.</li>
+  </ul>
+
+  <!-- L3 -->
+  <h2 id="l3"><span class="section-num">5</span>L3 – Pomiary parametrów obiektów (klasyczne CV)</h2>
+
+  <h3>Metoda segmentacji</h3>
+  <p>Segmentacja obiektów oparta na progowaniu w przestrzeni HSV. Jądra komórkowe mają charakterystyczny fioletowy odcień (kanał Hue: 120–160°), co pozwala izolować je od różowej cytoplazmy i czerwonych krwinek w tle.</p>
+
+  <h3>Reguły klasyfikacji geometrycznej</h3>
+  <table>
+    <tr><th>Klasa</th><th>Kryterium</th><th>Uzasadnienie biologiczne</th></tr>
+    <tr><td>EOSINOPHIL</td><td>Obecność jądra w masce HSV fioletowej + silna maska czerwona (ziarnistości)</td><td>Charakterystyczne kwasochłonne ziarnistości różowoczerwone</td></tr>
+    <tr><td>NEUTROPHIL</td><td>Jądro wielopłatowe (CC &gt; 1) lub okrągłość &lt; 0,55</td><td>Jądro segmentowane, nieregularny kształt</td></tr>
+    <tr><td>LYMPHOCYTE</td><td>Okrągłość ≥ 0,75 AND powierzchnia &lt; 7500 px</td><td>Małe, okrągłe jądro, mała cytoplazma</td></tr>
+    <tr><td>MONOCYTE</td><td>Domyślna (nie spełnia reguł Lymph.) + duże</td><td>Duże, nerkowate jądro jednopłatowe</td></tr>
+  </table>
+
+  <h3>Wyniki segmentacji i klasyfikacji regułowej</h3>
+  <div class="metric-row">
+    <div class="metric"><div class="val">89%</div><div class="lbl">Skuteczność wykrywania<br>(363 / 408 komórek)</div></div>
+    <div class="metric"><div class="val">56%</div><div class="lbl">Accuracy klasyfikacji<br>(na wykrytych)</div></div>
+    <div class="metric"><div class="val">0.33</div><div class="lbl">Macro avg F1-score</div></div>
+    <div class="metric"><div class="val">4</div><div class="lbl">Klasy (bez bazofili)</div></div>
+  </div>
+
+  <h3>Szczegółowy raport klasyfikacji (L3)</h3>
+  <table>
+    <tr><th>Klasa</th><th>Precision</th><th>Recall</th><th>F1-score</th><th>Support</th></tr>
+    <tr><td>EOSINOPHIL</td><td>0.36</td><td>0.33</td><td>0.34</td><td>88</td></tr>
+    <tr><td>LYMPHOCYTE</td><td>1.00</td><td>0.06</td><td>0.11</td><td>33</td></tr>
+    <tr><td>MONOCYTE</td><td>0.08</td><td>0.15</td><td>0.11</td><td>20</td></tr>
+    <tr class="best"><td>NEUTROPHIL</td><td>0.71</td><td>0.79</td><td>0.75</td><td>206</td></tr>
+    <tr><td><em>accuracy</em></td><td></td><td></td><td>0.56</td><td>347</td></tr>
+    <tr><td><em>macro avg</em></td><td>0.54</td><td>0.33</td><td>0.33</td><td>347</td></tr>
+  </table>
+
+  <div class="alert alert-warn">
+    <strong>Kluczowa obserwacja:</strong> Limfocyty mają precision = 1.00 (gdy model powie "to limfocyt", zawsze ma rację), ale recall = 0.06 (spośród 33 prawdziwych limfocytów wykrywa tylko 2!). Wynika to z faktu, że tylko 2 z 237 próbek neutrofili zostało wykrytych przez segmentację jako obiekty w ogóle. Problem tkwi w segmentacji, nie w samych regułach klasyfikacji.
+  </div>
+
+  <!-- L5 -->
+  <h2 id="l5"><span class="section-num">6</span>L5 – Konwolucyjna sieć neuronowa (CNN)</h2>
+
+  <h3 id="l5-arch">Architektura bazowa i augmentacja danych</h3>
+  <p>Ze względu na małą liczbę obrazów treningowych (242), zastosowano augmentację <em>on-the-fly</em> przez <code>ImageDataGenerator</code> z Kerasa. Przez 50 epok sieć "widziała" łącznie 12 100 unikalnych transformacji.</p>
+
+  <div class="card-grid">
+    <div class="card">
+      <h4>Augmentacja (modele 1-3)</h4>
+      <ul>
+        <li>Rotacja do ±45°</li>
+        <li>Przesunięcia X/Y ±20%</li>
+        <li>Zoom ±15%</li>
+        <li>Zmiana jasności [0.7 – 1.3]</li>
+        <li>Odbicia poziome</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Architektura CNN (modele 1-3)</h4>
+      <ul>
+        <li>Wejście: 128×128×3 (RGB)</li>
+        <li>Conv2D(32) + MaxPool</li>
+        <li>Conv2D(64) + MaxPool</li>
+        <li>Conv2D(128) + MaxPool</li>
+        <li>Flatten → Dense(128) → Dropout(0.5)</li>
+        <li>Dense(N, softmax)</li>
+      </ul>
+    </div>
+  </div>
+
+  <table>
+    <tr><th>Parametr</th><th>Wartość</th></tr>
+    <tr><td>Optymalizator</td><td>Adam (lr=0.001)</td></tr>
+    <tr><td>Funkcja straty</td><td>categorical_crossentropy</td></tr>
+    <tr><td>Liczba epok</td><td>50 (modele 1-2), 40 (model 3), 25 (model 4)</td></tr>
+    <tr><td>Batch size</td><td>64</td></tr>
+    <tr><td>Seed</td><td>42 (numpy, tensorflow, random)</td></tr>
+    <tr><td>Regularyzacja</td><td>Dropout(0.5)</td></tr>
+  </table>
+
+  <div class="code"><span class="cm"># Seed – ustawiony na początku każdego skryptu CNN</span>
+<span class="kw">import</span> random, numpy <span class="kw">as</span> np, tensorflow <span class="kw">as</span> tf
+
+random.seed(<span class="nm">42</span>)
+np.random.seed(<span class="nm">42</span>)
+tf.random.set_seed(<span class="nm">42</span>)
+
+<span class="cm"># Podział danych</span>
+train_df, temp_df = train_test_split(df, test_size=<span class="nm">0.30</span>, stratify=df[<span class="st">'cell_type'</span>], random_state=<span class="nm">42</span>)
+val_df, test_df   = train_test_split(temp_df, test_size=<span class="nm">0.50</span>, stratify=temp_df[<span class="st">'cell_type'</span>], random_state=<span class="nm">42</span>)</div>
+
+  <h3 id="l5-m1">Model 1: Naiwny (unweighted) – 4 klasy</h3>
+  <p><strong>Idea:</strong> Punkt startowy – trening bez żadnych mechanizmów kompensujących niezbalansowanie klas. Celowo "złe" podejście, służące jako baseline diagnostyczny.</p>
+
+  <div class="metric-row">
+    <div class="metric"><div class="val" style="color:#dc2626">~60%</div><div class="lbl">Accuracy (testowy)<br><em>złudna!</em></div></div>
+    <div class="metric"><div class="val" style="color:#dc2626">~0.17</div><div class="lbl">Macro F1</div></div>
+    <div class="metric"><div class="val" style="color:#dc2626">0</div><div class="lbl">Klasy inne niż<br>NEUTROPHIL wykryte</div></div>
+  </div>
+
+  <div class="alert alert-warn">
+    <strong>Patologia modelu:</strong> Val_accuracy = 0.5962 przez wszystkie 50 epok bez żadnej zmiany. Model utknął w lokalnym minimum i klasyfikuje 100% próbek jako NEUTROPHIL. Accuracy odzwierciedla wyłącznie dominację tej klasy w zbiorze.
+  </div>
+
+  <h3 id="l5-m2">Model 2: Ważony (weighted) – 4 klasy</h3>
+  <p><strong>Idea:</strong> Zastosowanie <code>class_weight</code> w Keras – klasy rzadkie otrzymują wyższe wagi w funkcji straty, co ma "zmusić" sieć do ich uczenia się.</p>
+
+  <table>
+    <tr><th>Klasa</th><th>Waga</th></tr>
+    <tr><td>NEUTROPHIL</td><td>0.4201</td></tr>
+    <tr><td>EOSINOPHIL</td><td>0.9918</td></tr>
+    <tr><td>MONOCYTE</td><td>4.3214</td></tr>
+    <tr><td>LYMPHOCYTE</td><td>2.6304</td></tr>
+  </table>
+
+  <div class="alert alert-warn">
+    <strong>Problem:</strong> Model z wagami oscyluje między klasyfikowaniem wszystkiego jako LYMPHOCYTE (val_accuracy ~0.06) a powrotem do NEUTROPHIL (0.59). Wagi klasowe przy tak silnej asymetrii i tak małym zbiorze powodują niestabilność treningu – sieć nie może znaleźć stabilnego minimum funkcji straty dla 4 klas jednocześnie.
+  </div>
+
+  <h3 id="l5-m3">Model 3: 3-klasowy z oversamplingiem</h3>
+  <p><strong>Idea:</strong> Fuzja biologiczna – LYMPHOCYTE + MONOCYTE → AGRANULOCYTE (komórki jednojądrzaste). Uzasadnienie: oba typy nie mają ziarnistości, mają zwartą budowę jądra, co powinno ułatwić sieci wykrywanie spójnych cech. Dodatkowo: oversampling (duplikacja próbek rzadkich klas) wyrównuje zbiór treningowy do 432 próbek (144 per klasa).</p>
+
+  <table>
+    <tr><th>Klasa</th><th>Precision</th><th>Recall</th><th>F1-score</th><th>Support</th></tr>
+    <tr><td>NEUTROPHIL</td><td>0.00</td><td>0.00</td><td>0.00</td><td>31</td></tr>
+    <tr><td>EOSINOPHIL</td><td>0.00</td><td>0.00</td><td>0.00</td><td>14</td></tr>
+    <tr><td>AGRANULOCYTE</td><td>0.16</td><td>1.00</td><td>0.27</td><td>8</td></tr>
+    <tr><td><em>accuracy</em></td><td></td><td></td><td>0.15</td><td>53</td></tr>
+    <tr><td><em>macro avg</em></td><td>0.05</td><td>0.33</td><td>0.09</td><td>53</td></tr>
+  </table>
+
+  <p>Model klasyfikuje wszystko jako AGRANULOCYTE – tym razem odwrotna dominacja (efekt oversampleowania klas mniejszościowych przy braku wag). Loss na zbiorze walidacyjnym jest bardzo niestabilny (skoki od 0.83 do 7.23), co wskazuje na overfitting na próbkach duplikowanych bez augmentacji.</p>
+
+  <h3 id="l5-m4">Model 4: Transfer learning MobileNetV2 – 3 klasy <span class="badge badge-green">Najlepszy</span></h3>
+  <p><strong>Idea:</strong> Zastąpienie warstw CNN własną siecią pretrenowanym modelem MobileNetV2 (wagi ImageNet). Warstwy MobileNetV2 są zamrożone; trenowane są tylko nowe warstwy głowy klasyfikatora. Użyto 3-klasowego podziału z oversamplingiem.</p>
+
+  <div class="code"><span class="cm"># Transfer learning – MobileNetV2</span>
+base_model = MobileNetV2(input_shape=(<span class="nm">128</span>, <span class="nm">128</span>, <span class="nm">3</span>),
+                         include_top=<span class="kw">False</span>, weights=<span class="st">'imagenet'</span>)
+base_model.trainable = <span class="kw">False</span>   <span class="cm"># zamrożone wagi</span>
+
+x = GlobalAveragePooling2D()(base_model.output)
+x = Dense(<span class="nm">128</span>, activation=<span class="st">'relu'</span>)(x)
+x = Dropout(<span class="nm">0.5</span>)(x)
+output = Dense(<span class="nm">3</span>, activation=<span class="st">'softmax'</span>)(x)</div>
+
+  <div class="metric-row">
+    <div class="metric"><div class="val" style="color:#16a34a">55%</div><div class="lbl">Accuracy (testowy)</div></div>
+    <div class="metric"><div class="val" style="color:#16a34a">0.46</div><div class="lbl">Macro F1</div></div>
+    <div class="metric"><div class="val" style="color:#16a34a">0.69</div><div class="lbl">F1 NEUTROPHIL</div></div>
+    <div class="metric"><div class="val" style="color:#16a34a">0.41</div><div class="lbl">F1 EOSINOPHIL</div></div>
+  </div>
+
+  <table>
+    <tr><th>Klasa</th><th>Precision</th><th>Recall</th><th>F1-score</th><th>Support</th></tr>
+    <tr class="best"><td>NEUTROPHIL</td><td>0.74</td><td>0.65</td><td>0.69</td><td>31</td></tr>
+    <tr><td>EOSINOPHIL</td><td>0.35</td><td>0.50</td><td>0.41</td><td>14</td></tr>
+    <tr><td>AGRANULOCYTE</td><td>0.33</td><td>0.25</td><td>0.29</td><td>8</td></tr>
+    <tr><td><em>accuracy</em></td><td></td><td></td><td>0.55</td><td>53</td></tr>
+    <tr><td><em>macro avg</em></td><td>0.47</td><td>0.47</td><td>0.46</td><td>53</td></tr>
+  </table>
+
+  <div class="alert alert-good">
+    <strong>✅ Model 4 jako jedyny wykazuje rzeczywistą zdolność generalizacji</strong> – wszystkie 3 klasy mają niezerowe F1, a trening jest stabilny (loss monotonicznie maleje przez 25 epok). Pretrenowane cechy z ImageNet (krawędzie, tekstury, gradiety kolorów) są wystarczająco ogólne, aby dobrze opisywać mikroskopowe struktury komórkowe.
+  </div>
+
+  <!-- COMPARE -->
+  <h2 id="compare"><span class="section-num">7</span>Porównanie wszystkich podejść</h2>
+
+  <table>
+    <tr>
+      <th>Model / Podejście</th>
+      <th>Klasy</th>
+      <th>Accuracy</th>
+      <th>Macro F1</th>
+      <th>Główny problem</th>
+    </tr>
+    <tr>
+      <td>L3 – Reguły geometryczne</td>
+      <td>4</td>
+      <td>56%</td>
+      <td>0.33</td>
+      <td>Słaba segmentacja limfocytów (recall=0.06)</td>
+    </tr>
+    <tr>
+      <td>L5 M1 – CNN unweighted</td>
+      <td>4</td>
+      <td>~60%*</td>
+      <td>~0.17</td>
+      <td>Klasyfikuje wszystko jako NEUTROPHIL</td>
+    </tr>
+    <tr>
+      <td>L5 M2 – CNN weighted</td>
+      <td>4</td>
+      <td>–</td>
+      <td>–</td>
+      <td>Oscylacja, brak konwergencji</td>
+    </tr>
+    <tr>
+      <td>L5 M3 – CNN 3-class (oversampling)</td>
+      <td>3</td>
+      <td>15%</td>
+      <td>0.09</td>
+      <td>Klasyfikuje wszystko jako AGRANULOCYTE</td>
+    </tr>
+    <tr class="best">
+      <td>L5 M4 – MobileNetV2 (TL)</td>
+      <td>3</td>
+      <td><strong>55%</strong></td>
+      <td><strong>0.46</strong></td>
+      <td>Słaba klasa AGRANULOCYTE (zbyt mała próba)</td>
+    </tr>
+  </table>
+
+  <p><em>*Accuracy unweighted jest złudna – sieć nie uczy się niczego poza klasą dominującą.</em></p>
+
+  <p>Mimo że accuracy L3 (56%) i MobileNetV2 (55%) są zbliżone, ich jakość jest fundamentalnie różna. Klasyfikator regułowy ma macro F1 = 0.33 (słaby na 3 z 4 klas), natomiast MobileNetV2 na uproszczonym 3-klasowym problemie osiąga macro F1 = 0.46 z sensownymi wynikami dla każdej klasy.</p>
+
+  <!-- WNIOSKI -->
+  <h2 id="wnioski"><span class="section-num">8</span>Wnioski końcowe i ograniczenia</h2>
+
+  <h3>Wnioski merytoryczne</h3>
+  <ul>
+    <li><strong>Niezbalansowanie klas to największy wróg CNN na małym zbiorze.</strong> Żaden z klasycznych mechanizmów (wagi klas, oversampling bez augmentacji) nie rozwiązał problemu w sposób zadowalający.</li>
+    <li><strong>Transfer learning jest kluczowy przy małej liczbie danych.</strong> MobileNetV2 z zamrożonymi wagami osiągnął sensowne wyniki bez overfittingu, podczas gdy własna sieć od zera albo nie zbiegała, albo przeuczała się.</li>
+    <li><strong>Fuzja klas biologicznych ma sens.</strong> Połączenie limfocytów i monocytów w agranulocyty uprościło problem i poprawiło stabilność treningu.</li>
+    <li><strong>Klasyczne CV jest dobre w detekcji, słabe w klasyfikacji.</strong> 89% skuteczność wykrywania komórek jest imponująca, ale reguły geometryczne są wrażliwe na jakość segmentacji i nie radzą sobie z wariantami wewnątrzklasowymi.</li>
+  </ul>
+
+  <h3>Ograniczenia projektu</h3>
+  <ul>
+    <li><strong>Bardzo mały zbiór danych</strong> (~350 próbek po filtracji) – niewystarczający do pełnego potencjału CNN. Zbiór BCCD lub PBC Dataset Normal DIB zawierają tysiące próbek.</li>
+    <li><strong>Brak GPU</strong> – trening na CPU ograniczył eksperymenty z większymi architekturami i liczbą epok.</li>
+    <li><strong>Brak L6 (fine-tuning)</strong> – odmrożenie warstw MobileNetV2 i fine-tuning z niskim learning rate mogłoby poprawić wyniki.</li>
+    <li>Klasa LYMPHOCYTE jest praktycznie niewidoczna przez segmentację HSV – wymaga innej maski kolorystycznej.</li>
+  </ul>
+
+  <div class="alert alert-info">
+    <strong>Potencjalne kierunki ulepszeń:</strong> (1) Użycie większego publicznego datasetu. (2) Fine-tuning MobileNetV2 (odmrożenie ostatnich 20 warstw). (3) Zastosowanie SMOTE zamiast prostego oversampleowania. (4) Eksperyment z ResNet50 lub EfficientNetB0. (5) Implementacja Grad-CAM do wizualizacji uwagi modelu.
+  </div>
+
+  <hr>
+  <p style="color:var(--muted);font-size:0.85rem;text-align:center;">
+    BloodCellsAnalysis · Lidia Gozdecka · 2025 ·
+    <a href="https://github.com/LidiaGozdecka/BloodCellsAnalysis" style="color:var(--accent)">GitHub</a>
+  </p>
+
+</div>
+</body>
+</html>

@@ -13,7 +13,7 @@ from tensorflow.keras.applications import MobileNetV2
 from sklearn.metrics import confusion_matrix, classification_report
 
 import random
-SEED = 42
+SEED = 2026
 random.seed(SEED)
 np.random.seed(SEED)
 tf.random.set_seed(SEED)

@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import os
 
 import random
-SEED = 42
+SEED = 2026
 random.seed(SEED)
 np.random.seed(SEED)
 tf.random.set_seed(SEED)
