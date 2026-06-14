@@ -5,7 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c76cae87-4f6c-41ac-ac08-64372f89ba29" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/L3_pomiary.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/L3_pomiary0.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/L3_pomiary01.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/L5_cnn.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/L5_cnn0.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/L5_cnn_3class.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/L5_cnn_unweighted.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/run_pipeline_moreinfo_3class.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/run_pipeline_moreinfo_unweighted.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/run_pipeline_moreinfo_weighted.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sprawozdanie.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/L3_pomiary.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/L3_pomiary.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +26,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="HTML File" />
         <option value="Python Script" />
       </list>
     </option>
@@ -22,9 +34,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="3F7zGiLyufm4zzVUHRa3VCkKjDw" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -32,16 +44,27 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Python.L1_akwizycja.executor": "Run",
     "Python.L1_dyskretyzacja.executor": "Run",
     "Python.L2_przetwarzanie.executor": "Run",
+    "Python.L3_pomiary.executor": "Run",
+    "Python.L3_pomiary01.executor": "Run",
+    "Python.L5_cnn.executor": "Run",
+    "Python.L5_cnn_unweighted.executor": "Run",
+    "Python.run_pipeline.executor": "Run",
+    "Python.run_pipeline_moreinfo.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main"
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/moje/IAD/6_semestr/analiza_obrazu/projekt/src"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\moje\IAD\6_semestr\analiza_obrazu\projekt\src" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\moje\IAD\6_semestr\analiza_obrazu\projekt\data\raw" />
     </key>
