@@ -5,8 +5,12 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import matplotlib.pyplot as plt
 import os
 
-# 1. Ustalenie SEED losowości dla pełnej reprodukowalności (Wymóg z PDF)
-tf.random.set_seed(42)
+import random
+SEED = 42
+random.seed(SEED)
+np.random.seed(SEED)
+tf.random.set_seed(SEED)
+
 
 # 2. Ścieżki do danych
 script_dir = os.path.dirname(os.path.abspath(__file__))

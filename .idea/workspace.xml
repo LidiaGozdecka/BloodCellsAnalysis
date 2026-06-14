@@ -5,16 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c76cae87-4f6c-41ac-ac08-64372f89ba29" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/L5_cnn_3_class_better.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/run_pipeline_moreinfo_3class_better.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/raport_koncowy.html" beforeDir="false" afterPath="$PROJECT_DIR$/raport_koncowy.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/L5_cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/L5_cnn_weighted.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/L5_cnn_3class.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/L5_cnn_3_class_bad.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/krzywe_uczenia_cnn_l5.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/krzywe_uczenia_cnn_l5.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/macierz_pomylek_cnn_l5.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/macierz_pomylek_cnn_l5.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/run_pipeline_moreinfo_3class.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/run_pipeline_moreinfo_3class_bad.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/run_pipeline_moreinfo_weighted.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/run_pipeline_moreinfo_weighted.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/L5_cnn0.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/L5_cnn0.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/L5_cnn_3_class_bad.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/L5_cnn_3_class_bad.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/L5_cnn_3_class_better.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/L5_cnn_3_class_better.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/L5_cnn_unweighted.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/L5_cnn_unweighted.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/L5_cnn_weighted.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/L5_cnn_weighted.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -11,8 +11,11 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout, Input
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
-# Ustawienie ziarna losowości dla powtarzalności wyników
-tf.random.set_seed(42)
+import random
+SEED = 42
+random.seed(SEED)
+np.random.seed(SEED)
+tf.random.set_seed(SEED)
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
 images_dir = os.path.normpath(os.path.join(script_dir, "..", "data", "raw", "JPEGImages"))

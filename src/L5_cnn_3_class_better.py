@@ -12,7 +12,11 @@ from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.applications import MobileNetV2
 from sklearn.metrics import confusion_matrix, classification_report
 
-tf.random.set_seed(42)
+import random
+SEED = 42
+random.seed(SEED)
+np.random.seed(SEED)
+tf.random.set_seed(SEED)
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
 images_dir = os.path.normpath(os.path.join(script_dir, "..", "data", "raw", "JPEGImages"))
@@ -57,6 +61,7 @@ for class_name in allowed_classes:
     df_class = df_train_raw[df_train_raw['Class_String'] == class_name]
     df_class_over = df_class.sample(max_size, replace=True, random_state=42)
     lst.append(df_class_over)
+#df_train = pd.concat(lst, axis=0).sample(frac=1, random_state=42).reset_index(drop=True)
 df_train = pd.concat(lst, axis=0).sample(frac=1, random_state=42).reset_index(drop=True)
 
 print(f"Zbiory po OVERSAMPLINGU: Trening: {len(df_train)} | Walidacja: {len(df_val)} | Test: {len(df_test)}")
