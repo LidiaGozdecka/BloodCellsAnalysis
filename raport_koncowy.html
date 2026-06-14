@@ -93,9 +93,9 @@ weighted avg       0.61      0.56      0.55       347
 
         <h3>Wyniki Procesu Uczenia, Ewaluacji i Macierz Pomyłek CNN:</h3>
         <pre>WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
-I0000 00:00:1781458121.445280   16336 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1781460209.434262   29080 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
 WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
-I0000 00:00:1781458127.967508   16336 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1781460216.948500   29080 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
 --- L5: PRZYGOTOWANIE I PODZIAŁ DANYCH DLA 4 OFICJALNYCH KLAS ---
 --- L5: PRZYGOTOWANIE I PODZIAŁ DANYCH DLA 4 OFICJALNYCH KLAS ---
 Zbiory po odrzuceniu bazofili i braków: Trening: 242 | Walidacja: 52 | Test: 53
@@ -112,7 +112,7 @@ Wyznaczone wagi dla poszczególnych indeksów klas:
 Klasy zmapowane w sieci CNN (4 klasy): ['NEUTROPHIL', 'EOSINOPHIL', 'MONOCYTE', 'LYMPHOCYTE']
 
 --- L5: PROJEKTOWANIE ARCHITEKTURY MODELU CNN ---
-I0000 00:00:1781458132.812724   16336 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+I0000 00:00:1781460222.210594   29080 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
 To enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
 WARNING:tensorflow:TensorFlow GPU support is not available on native Windows for TensorFlow >= 2.11. Even if CUDA/cuDNN are installed, GPU will not be used. Please use WSL2 or the TensorFlow-DirectML plugin.
 Model: "sequential"
@@ -146,118 +146,118 @@ Model: "sequential"
 --- L5: TRENING SIECI NEURONOWEJ ---
 [INFO] Rozpoczynanie treningu ze zbalansowanymi wagami klas. Logi będą wyświetlane na żywo w pipeline.
 Epoch 1/50
-4/4 - 6s - 2s/step - accuracy: 0.2149 - loss: 1.6411 - val_accuracy: 0.0962 - val_loss: 1.3458
+4/4 - 6s - 2s/step - accuracy: 0.3017 - loss: 2.5283 - val_accuracy: 0.0577 - val_loss: 1.3990
 Epoch 2/50
-4/4 - 4s - 906ms/step - accuracy: 0.2479 - loss: 1.4175 - val_accuracy: 0.0962 - val_loss: 1.3913
+4/4 - 4s - 953ms/step - accuracy: 0.1529 - loss: 1.4063 - val_accuracy: 0.2500 - val_loss: 1.3963
 Epoch 3/50
-4/4 - 4s - 904ms/step - accuracy: 0.1612 - loss: 1.3960 - val_accuracy: 0.2500 - val_loss: 1.3661
+4/4 - 4s - 916ms/step - accuracy: 0.3430 - loss: 1.3915 - val_accuracy: 0.2500 - val_loss: 1.3509
 Epoch 4/50
-4/4 - 4s - 963ms/step - accuracy: 0.4876 - loss: 1.3859 - val_accuracy: 0.4423 - val_loss: 1.3707
+4/4 - 4s - 892ms/step - accuracy: 0.3264 - loss: 1.3943 - val_accuracy: 0.5962 - val_loss: 1.3785
 Epoch 5/50
-4/4 - 4s - 901ms/step - accuracy: 0.3926 - loss: 1.3876 - val_accuracy: 0.2500 - val_loss: 1.3676
+4/4 - 4s - 878ms/step - accuracy: 0.4174 - loss: 1.3892 - val_accuracy: 0.5962 - val_loss: 1.3682
 Epoch 6/50
-4/4 - 4s - 896ms/step - accuracy: 0.3388 - loss: 1.3929 - val_accuracy: 0.2500 - val_loss: 1.3679
+4/4 - 4s - 895ms/step - accuracy: 0.5331 - loss: 1.3862 - val_accuracy: 0.5962 - val_loss: 1.3540
 Epoch 7/50
-4/4 - 4s - 936ms/step - accuracy: 0.4380 - loss: 1.3896 - val_accuracy: 0.5962 - val_loss: 1.3850
+4/4 - 4s - 934ms/step - accuracy: 0.4545 - loss: 1.3901 - val_accuracy: 0.5962 - val_loss: 1.3816
 Epoch 8/50
-4/4 - 4s - 879ms/step - accuracy: 0.4091 - loss: 1.3863 - val_accuracy: 0.5577 - val_loss: 1.3847
+4/4 - 4s - 882ms/step - accuracy: 0.3182 - loss: 1.3862 - val_accuracy: 0.0577 - val_loss: 1.3864
 Epoch 9/50
-4/4 - 4s - 909ms/step - accuracy: 0.4215 - loss: 1.3863 - val_accuracy: 0.5577 - val_loss: 1.3828
+4/4 - 4s - 890ms/step - accuracy: 0.0661 - loss: 1.3864 - val_accuracy: 0.0577 - val_loss: 1.3871
 Epoch 10/50
-4/4 - 4s - 901ms/step - accuracy: 0.3802 - loss: 1.3867 - val_accuracy: 0.5962 - val_loss: 1.3841
+4/4 - 4s - 905ms/step - accuracy: 0.0661 - loss: 1.3864 - val_accuracy: 0.0577 - val_loss: 1.3868
 Epoch 11/50
-4/4 - 4s - 889ms/step - accuracy: 0.3554 - loss: 1.3873 - val_accuracy: 0.5769 - val_loss: 1.3855
+4/4 - 4s - 953ms/step - accuracy: 0.0661 - loss: 1.3861 - val_accuracy: 0.0577 - val_loss: 1.3868
 Epoch 12/50
-4/4 - 4s - 981ms/step - accuracy: 0.3058 - loss: 1.3864 - val_accuracy: 0.5769 - val_loss: 1.3859
+4/4 - 3s - 875ms/step - accuracy: 0.0579 - loss: 1.3862 - val_accuracy: 0.0577 - val_loss: 1.3869
 Epoch 13/50
-4/4 - 4s - 902ms/step - accuracy: 0.3388 - loss: 1.3864 - val_accuracy: 0.5962 - val_loss: 1.3858
+4/4 - 4s - 939ms/step - accuracy: 0.0702 - loss: 1.3863 - val_accuracy: 0.0577 - val_loss: 1.3872
 Epoch 14/50
-4/4 - 4s - 883ms/step - accuracy: 0.3719 - loss: 1.3864 - val_accuracy: 0.5962 - val_loss: 1.3856
+4/4 - 4s - 893ms/step - accuracy: 0.0785 - loss: 1.3865 - val_accuracy: 0.0577 - val_loss: 1.3877
 Epoch 15/50
-4/4 - 4s - 929ms/step - accuracy: 0.4421 - loss: 1.3863 - val_accuracy: 0.2500 - val_loss: 1.3858
+4/4 - 3s - 859ms/step - accuracy: 0.0785 - loss: 1.3861 - val_accuracy: 0.0577 - val_loss: 1.3881
 Epoch 16/50
-4/4 - 4s - 902ms/step - accuracy: 0.4380 - loss: 1.3863 - val_accuracy: 0.5962 - val_loss: 1.3848
+4/4 - 6s - 1s/step - accuracy: 0.0868 - loss: 1.3860 - val_accuracy: 0.0577 - val_loss: 1.3879
 Epoch 17/50
-4/4 - 4s - 895ms/step - accuracy: 0.4628 - loss: 1.3864 - val_accuracy: 0.5962 - val_loss: 1.3847
+4/4 - 4s - 884ms/step - accuracy: 0.1116 - loss: 1.3863 - val_accuracy: 0.0577 - val_loss: 1.3877
 Epoch 18/50
-4/4 - 3s - 863ms/step - accuracy: 0.4959 - loss: 1.3865 - val_accuracy: 0.5962 - val_loss: 1.3847
+4/4 - 4s - 920ms/step - accuracy: 0.1157 - loss: 1.3862 - val_accuracy: 0.0577 - val_loss: 1.3879
 Epoch 19/50
-4/4 - 4s - 915ms/step - accuracy: 0.5331 - loss: 1.3865 - val_accuracy: 0.5962 - val_loss: 1.3844
+4/4 - 4s - 886ms/step - accuracy: 0.1736 - loss: 1.3859 - val_accuracy: 0.0577 - val_loss: 1.3875
 Epoch 20/50
-4/4 - 4s - 897ms/step - accuracy: 0.5289 - loss: 1.3866 - val_accuracy: 0.5962 - val_loss: 1.3843
+4/4 - 4s - 892ms/step - accuracy: 0.1777 - loss: 1.3861 - val_accuracy: 0.0577 - val_loss: 1.3875
 Epoch 21/50
-4/4 - 4s - 882ms/step - accuracy: 0.4587 - loss: 1.3870 - val_accuracy: 0.5962 - val_loss: 1.3808
+4/4 - 4s - 901ms/step - accuracy: 0.1405 - loss: 1.3862 - val_accuracy: 0.0577 - val_loss: 1.3873
 Epoch 22/50
-4/4 - 3s - 859ms/step - accuracy: 0.4835 - loss: 1.3870 - val_accuracy: 0.5962 - val_loss: 1.3838
+4/4 - 4s - 884ms/step - accuracy: 0.2314 - loss: 1.3860 - val_accuracy: 0.0577 - val_loss: 1.3866
 Epoch 23/50
-4/4 - 4s - 878ms/step - accuracy: 0.4587 - loss: 1.3866 - val_accuracy: 0.5962 - val_loss: 1.3848
+4/4 - 4s - 1s/step - accuracy: 0.1942 - loss: 1.3869 - val_accuracy: 0.0962 - val_loss: 1.3863
 Epoch 24/50
-4/4 - 3s - 862ms/step - accuracy: 0.3140 - loss: 1.3865 - val_accuracy: 0.2308 - val_loss: 1.3874
+4/4 - 3s - 875ms/step - accuracy: 0.1983 - loss: 1.3860 - val_accuracy: 0.0962 - val_loss: 1.3861
 Epoch 25/50
-4/4 - 3s - 857ms/step - accuracy: 0.2066 - loss: 1.3868 - val_accuracy: 0.5962 - val_loss: 1.3854
+4/4 - 4s - 1s/step - accuracy: 0.1942 - loss: 1.3861 - val_accuracy: 0.0962 - val_loss: 1.3862
 Epoch 26/50
-4/4 - 4s - 878ms/step - accuracy: 0.4256 - loss: 1.3865 - val_accuracy: 0.5577 - val_loss: 1.3853
+4/4 - 4s - 1s/step - accuracy: 0.1612 - loss: 1.3854 - val_accuracy: 0.0962 - val_loss: 1.3860
 Epoch 27/50
-4/4 - 3s - 865ms/step - accuracy: 0.3678 - loss: 1.3865 - val_accuracy: 0.5192 - val_loss: 1.3858
+4/4 - 4s - 926ms/step - accuracy: 0.1612 - loss: 1.3860 - val_accuracy: 0.0962 - val_loss: 1.3860
 Epoch 28/50
-4/4 - 3s - 848ms/step - accuracy: 0.3554 - loss: 1.3863 - val_accuracy: 0.4231 - val_loss: 1.3860
+4/4 - 4s - 892ms/step - accuracy: 0.1446 - loss: 1.3864 - val_accuracy: 0.0962 - val_loss: 1.3861
 Epoch 29/50
-4/4 - 3s - 841ms/step - accuracy: 0.3347 - loss: 1.3861 - val_accuracy: 0.4808 - val_loss: 1.3857
+4/4 - 4s - 894ms/step - accuracy: 0.1777 - loss: 1.3857 - val_accuracy: 0.0962 - val_loss: 1.3860
 Epoch 30/50
-4/4 - 3s - 862ms/step - accuracy: 0.3843 - loss: 1.3859 - val_accuracy: 0.3846 - val_loss: 1.3856
+4/4 - 4s - 904ms/step - accuracy: 0.1983 - loss: 1.3849 - val_accuracy: 0.0962 - val_loss: 1.3861
 Epoch 31/50
-4/4 - 3s - 850ms/step - accuracy: 0.2521 - loss: 1.3857 - val_accuracy: 0.2308 - val_loss: 1.3853
+4/4 - 5s - 1s/step - accuracy: 0.1570 - loss: 1.3866 - val_accuracy: 0.0962 - val_loss: 1.3862
 Epoch 32/50
-4/4 - 3s - 871ms/step - accuracy: 0.2686 - loss: 1.3883 - val_accuracy: 0.3462 - val_loss: 1.3858
+4/4 - 4s - 892ms/step - accuracy: 0.1653 - loss: 1.3845 - val_accuracy: 0.0962 - val_loss: 1.3862
 Epoch 33/50
-4/4 - 4s - 880ms/step - accuracy: 0.3760 - loss: 1.3860 - val_accuracy: 0.2500 - val_loss: 1.3860
+4/4 - 4s - 904ms/step - accuracy: 0.1074 - loss: 1.3873 - val_accuracy: 0.0962 - val_loss: 1.3861
 Epoch 34/50
-4/4 - 3s - 859ms/step - accuracy: 0.3140 - loss: 1.3862 - val_accuracy: 0.2500 - val_loss: 1.3861
+4/4 - 4s - 921ms/step - accuracy: 0.1033 - loss: 1.3865 - val_accuracy: 0.0962 - val_loss: 1.3861
 Epoch 35/50
-4/4 - 3s - 872ms/step - accuracy: 0.2355 - loss: 1.3863 - val_accuracy: 0.2500 - val_loss: 1.3866
+4/4 - 4s - 896ms/step - accuracy: 0.1157 - loss: 1.3862 - val_accuracy: 0.0962 - val_loss: 1.3858
 Epoch 36/50
-4/4 - 4s - 879ms/step - accuracy: 0.2314 - loss: 1.3866 - val_accuracy: 0.2500 - val_loss: 1.3868
+4/4 - 4s - 955ms/step - accuracy: 0.1364 - loss: 1.3857 - val_accuracy: 0.0962 - val_loss: 1.3862
 Epoch 37/50
-4/4 - 4s - 884ms/step - accuracy: 0.2603 - loss: 1.3864 - val_accuracy: 0.2500 - val_loss: 1.3870
+4/4 - 4s - 877ms/step - accuracy: 0.1570 - loss: 1.3859 - val_accuracy: 0.0962 - val_loss: 1.3860
 Epoch 38/50
-4/4 - 3s - 859ms/step - accuracy: 0.1860 - loss: 1.3864 - val_accuracy: 0.0962 - val_loss: 1.3874
+4/4 - 4s - 929ms/step - accuracy: 0.1405 - loss: 1.3865 - val_accuracy: 0.0962 - val_loss: 1.3863
 Epoch 39/50
-4/4 - 4s - 902ms/step - accuracy: 0.1860 - loss: 1.3862 - val_accuracy: 0.0962 - val_loss: 1.3878
+4/4 - 4s - 951ms/step - accuracy: 0.1198 - loss: 1.3856 - val_accuracy: 0.0962 - val_loss: 1.3867
 Epoch 40/50
-4/4 - 3s - 862ms/step - accuracy: 0.1322 - loss: 1.3865 - val_accuracy: 0.0962 - val_loss: 1.3879
+4/4 - 4s - 900ms/step - accuracy: 0.1157 - loss: 1.3867 - val_accuracy: 0.0962 - val_loss: 1.3865
 Epoch 41/50
-4/4 - 4s - 885ms/step - accuracy: 0.1860 - loss: 1.3864 - val_accuracy: 0.2500 - val_loss: 1.3879
+4/4 - 4s - 885ms/step - accuracy: 0.1240 - loss: 1.3853 - val_accuracy: 0.0962 - val_loss: 1.3867
 Epoch 42/50
-4/4 - 3s - 846ms/step - accuracy: 0.1736 - loss: 1.3864 - val_accuracy: 0.0962 - val_loss: 1.3878
+4/4 - 4s - 902ms/step - accuracy: 0.0992 - loss: 1.3872 - val_accuracy: 0.0962 - val_loss: 1.3868
 Epoch 43/50
-4/4 - 4s - 887ms/step - accuracy: 0.1488 - loss: 1.3865 - val_accuracy: 0.0577 - val_loss: 1.3879
+4/4 - 4s - 899ms/step - accuracy: 0.1074 - loss: 1.3848 - val_accuracy: 0.0962 - val_loss: 1.3868
 Epoch 44/50
-4/4 - 3s - 865ms/step - accuracy: 0.1570 - loss: 1.3866 - val_accuracy: 0.0577 - val_loss: 1.3884
+4/4 - 3s - 872ms/step - accuracy: 0.1322 - loss: 1.3848 - val_accuracy: 0.0962 - val_loss: 1.3870
 Epoch 45/50
-4/4 - 3s - 875ms/step - accuracy: 0.1570 - loss: 1.3865 - val_accuracy: 0.0577 - val_loss: 1.3887
+4/4 - 3s - 875ms/step - accuracy: 0.0992 - loss: 1.3859 - val_accuracy: 0.0962 - val_loss: 1.3868
 Epoch 46/50
-4/4 - 3s - 861ms/step - accuracy: 0.2107 - loss: 1.3859 - val_accuracy: 0.0577 - val_loss: 1.3885
+4/4 - 3s - 872ms/step - accuracy: 0.0950 - loss: 1.3852 - val_accuracy: 0.0962 - val_loss: 1.3870
 Epoch 47/50
-4/4 - 4s - 878ms/step - accuracy: 0.1612 - loss: 1.3864 - val_accuracy: 0.0577 - val_loss: 1.3888
+4/4 - 4s - 917ms/step - accuracy: 0.0785 - loss: 1.3869 - val_accuracy: 0.0962 - val_loss: 1.3868
 Epoch 48/50
-4/4 - 3s - 860ms/step - accuracy: 0.2231 - loss: 1.3862 - val_accuracy: 0.2500 - val_loss: 1.3885
+4/4 - 4s - 902ms/step - accuracy: 0.1322 - loss: 1.3850 - val_accuracy: 0.0962 - val_loss: 1.3868
 Epoch 49/50
-4/4 - 3s - 858ms/step - accuracy: 0.2066 - loss: 1.3864 - val_accuracy: 0.2500 - val_loss: 1.3882
+4/4 - 4s - 910ms/step - accuracy: 0.1116 - loss: 1.3868 - val_accuracy: 0.0962 - val_loss: 1.3866
 Epoch 50/50
-4/4 - 4s - 897ms/step - accuracy: 0.2975 - loss: 1.3859 - val_accuracy: 0.2500 - val_loss: 1.3882
+4/4 - 4s - 876ms/step - accuracy: 0.1198 - loss: 1.3860 - val_accuracy: 0.0962 - val_loss: 1.3863
 [INFO] Wykres krzywych uczenia CNN został zapisany jako 'krzywe_uczenia_cnn_l5.png'.
 
 --- L5: URUCHAMIANIE PREDYKCJI NA ZBIORZE TESTOWYM ---
 
-[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 376ms/step
-[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 385ms/step
+[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 467ms/step
+[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 476ms/step
 
 ================ MACIERZ POMYŁEK - SIEĆ CNN (L5) ================
                       Predykcja NEUTROPHIL  ...  Predykcja LYMPHOCYTE
-Prawdziwy NEUTROPHIL                     0  ...                     0
-Prawdziwy EOSINOPHIL                     0  ...                     0
-Prawdziwy MONOCYTE                       0  ...                     0
-Prawdziwy LYMPHOCYTE                     0  ...                     0
+Prawdziwy NEUTROPHIL                     0  ...                    31
+Prawdziwy EOSINOPHIL                     0  ...                    14
+Prawdziwy MONOCYTE                       0  ...                     3
+Prawdziwy LYMPHOCYTE                     0  ...                     5
 
 [4 rows x 4 columns]
 
@@ -265,32 +265,32 @@ Prawdziwy LYMPHOCYTE                     0  ...                     0
               precision    recall  f1-score   support
 
   NEUTROPHIL       0.00      0.00      0.00        31
-  EOSINOPHIL       0.26      1.00      0.42        14
+  EOSINOPHIL       0.00      0.00      0.00        14
     MONOCYTE       0.00      0.00      0.00         3
-  LYMPHOCYTE       0.00      0.00      0.00         5
+  LYMPHOCYTE       0.09      1.00      0.17         5
 
-    accuracy                           0.26        53
-   macro avg       0.07      0.25      0.10        53
-weighted avg       0.07      0.26      0.11        53
+    accuracy                           0.09        53
+   macro avg       0.02      0.25      0.04        53
+weighted avg       0.01      0.09      0.02        53
 
 ========================================================================
 
 --- L5: URUCHAMIANIE PREDYKCJI NA ZBIORZE TESTOWYM ---
 
-[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 286ms/step
-[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 296ms/step
+[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 295ms/step
+[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 305ms/step
 
 ================ RAPORT KLASYFIKACJI / METRYKI (L5) ================
               precision    recall  f1-score   support
 
   NEUTROPHIL       0.00      0.00      0.00        31
-  EOSINOPHIL       0.26      1.00      0.42        14
+  EOSINOPHIL       0.00      0.00      0.00        14
     MONOCYTE       0.00      0.00      0.00         3
-  LYMPHOCYTE       0.00      0.00      0.00         5
+  LYMPHOCYTE       0.09      1.00      0.17         5
 
-    accuracy                           0.26        53
-   macro avg       0.07      0.25      0.10        53
-weighted avg       0.07      0.26      0.11        53
+    accuracy                           0.09        53
+   macro avg       0.02      0.25      0.04        53
+weighted avg       0.01      0.09      0.02        53
 
 </pre>
 

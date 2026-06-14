@@ -46,7 +46,7 @@ def generate_html_report(l3_output, l5_output):
     """Generuje ostateczny raport w formacie HTML na podstawie zebranych danych."""
     script_dir = os.path.dirname(os.path.abspath(__file__))
     project_dir = os.path.normpath(os.path.join(script_dir, ".."))
-    report_path = os.path.join(project_dir, "raport_koncowy.html")
+    report_path = os.path.join(project_dir, "raport_koncowy_weighted.html")
 
     # 1. Sprawdzanie podstawowych wykresów (Krzywe uczenia i segmentacja)
     l3_plot_exists = os.path.exists(os.path.join(script_dir, "segmentacja_klasyczna_l3.png"))
@@ -187,7 +187,11 @@ if __name__ == "__main__":
     print("=================== INTEGRACJA POTOKU URUCHOMIENIOWEGO (LIVE LOGS) ===================")
 
     l3_logs = run_script("L3_pomiary.py")
-    l5_logs = run_script("L5_cnn.py")
+    l5_logs = run_script("L5_cnn_weighted.py")
 
     generate_html_report(l3_logs, l5_logs)
     print("======================================================================================")
+
+
+
+

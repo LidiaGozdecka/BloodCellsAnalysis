@@ -44,7 +44,7 @@ def generate_html_report(l3_output, l5_output):
     """Generuje raport w formacie HTML dostosowany do eksperymentu z 3 klasami."""
     script_dir = os.path.dirname(os.path.abspath(__file__))
     project_dir = os.path.normpath(os.path.join(script_dir, ".."))
-    report_path = os.path.join(project_dir, "raport_koncowy_3class.html")
+    report_path = os.path.join(project_dir, "raport_koncowy_3class_better.html")
 
     l3_plot_exists = os.path.exists(os.path.join(script_dir, "segmentacja_klasyczna_l3.png"))
     l5_plot_exists = os.path.exists(os.path.join(script_dir, "krzywe_uczenia_cnn_l5_3class.png"))
@@ -140,7 +140,9 @@ if __name__ == "__main__":
     print("=================== INTEGRACJA POTOKU: EKSPERYMENT 3-KLASOWY ===================")
 
     l3_logs = run_script("L3_pomiary.py")
-    l5_logs = run_script("L5_cnn_3_class.py")
+    l5_logs = run_script("L5_cnn_3_class_better.py")
 
     generate_html_report(l3_logs, l5_logs)
     print("======================================================================================")
+
+

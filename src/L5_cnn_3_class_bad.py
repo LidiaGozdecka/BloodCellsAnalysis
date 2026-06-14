@@ -159,7 +159,7 @@ print(df_cm_cnn)
 # --- GRAFICZNA MACIERZ POMYŁEK DLA CNN (3 KLASY) ---
 print("\n[INFO] Zapisywanie graficznej macierzy pomyłek (Teal)...")
 plt.figure(figsize=(8, 6))
-sns.heatmap(cm, annot=True, fmt='d', cmap='Teal',
+sns.heatmap(cm, annot=True, fmt='d', cmap='YlGnBu',
             xticklabels=class_labels, yticklabels=class_labels)
 plt.title('Macierz Pomyłek CNN - Po Fuzji Biologicznej (3 Klasy)')
 plt.ylabel('Rzeczywista klasa')
@@ -170,4 +170,6 @@ plt.savefig(os.path.join(script_dir, "macierz_pomylek_cnn_l5_3class.png"), bbox_
 plt.close()
 print("[INFO] Graficzna macierz pomyłek została zapisana jako 'macierz_pomylek_cnn_l5_3class.png'.")
 
-print("\n================ RAPORT KLASYFI
+print("\n================ RAPORT KLASYFIKACJI / METRYKI (L5 - 3 KLASY) ================")
+print(classification_report(true_classes, predicted_classes, target_names=class_labels, zero_division=0))
+print("========================================================================")
