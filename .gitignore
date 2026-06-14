@@ -1,0 +1,8 @@
+# Ignoruj wirtualne środowisko
+venv/
+.idea/
+
+# Ignoruj dane z obrazami (są za ciężkie na GitHuba!)
+data/raw/
+data/processed/
+__pycache__/
