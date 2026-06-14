@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c76cae87-4f6c-41ac-ac08-64372f89ba29" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/L2_przetwarzanie.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/L3_pomiary.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +35,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Python.L1_akwizycja.executor": "Run",
     "Python.L1_dyskretyzacja.executor": "Run",
+    "Python.L2_przetwarzanie.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main"
