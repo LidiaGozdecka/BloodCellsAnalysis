@@ -120,9 +120,9 @@ Wszystkie skrypty korzystają z ustalonego seeda losowości:
 
 | Biblioteka | Seed |
 |-----------|------|
-| Python `random` | 42 |
-| NumPy | 42 |
-| TensorFlow | 42 |
+| Python `random` | 2026 |
+| NumPy | 2026 |
+| TensorFlow | 2026 |
 | scikit-learn (`train_test_split`) | `random_state=42` |
 
 Modele `.keras` nie są przechowywane w repozytorium ze względu na rozmiar. Aby uzyskać zapisany model, uruchom odpowiedni skrypt — zostanie wygenerowany lokalnie.
