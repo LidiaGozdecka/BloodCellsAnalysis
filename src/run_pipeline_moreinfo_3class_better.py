@@ -87,7 +87,7 @@ def generate_html_report(l3_output, l5_output):
 </head>
 <body>
 <div class="container">
-    <h1>🔬 Zintegrowany Raport Analityczny: Optymalizacja 3-Klasowa</h1>
+    <h1>Zintegrowany Raport Analityczny: Optymalizacja 3-Klasowa</h1>
 
     <div class="section">
         <h2>1. Opis i Zmiana Założeń Projektu (Biologiczna Konsolidacja Klas)</h2>
