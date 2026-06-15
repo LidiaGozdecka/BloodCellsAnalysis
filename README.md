@@ -14,7 +14,7 @@ Zbiór zawiera obrazy mikroskopowe białych krwinek podzielone na klasy:
 
 > ⚠️ Klasa `BASOPHIL` została wykluczona z modelowania ze względu na krytycznie niską liczebność (3 próbki), uniemożliwiającą stratyfikowany podział na zbiory.
 
-Po pobraniu umieść dane w katalogu `data/raw/` zgodnie ze strukturą:
+Wszystkie potrzebne dane są zawarte w repozytorium w folderze data/raw.
 ```
 data/
 └── raw/
@@ -35,15 +35,10 @@ BloodCellsAnalysis/
 │   ├── L1_dyskretyzacja.py         ← L1: próbkowanie, kwantyzacja, histogramy
 │   ├── L2_przetwarzanie.py         ← L2: filtry, transformacje, progowanie
 │   ├── L3_pomiary.py               ← L3: segmentacja i klasyfikacja regułowa
-│   ├── L5_cnn_weighted.py          ← L5: CNN z wagami klas (model 4-klasowy)
-│   ├── L5_cnn_unweighted.py        ← L5: CNN bez ważenia (model bazowy / naiwny)
-│   ├── L5_cnn_3_class.py           ← L5: CNN 3-klasowy z oversamplingiem
-│   └── L5_cnn_3_class_better.py    ← L5: Transfer learning MobileNetV2 (3 klasy)
-├── raport_bazowy_unweighted.html   ← raport modelu naiwnego
-├── raport_koncowy.html             ← raport modelu ważonego
-├── raport_koncowy_3class.html      ← raport modelu 3-klasowego (CNN własna)
+|   ├── L3_pomiary_better.py         ← L3_2: segmentacja  + bounding boxes i klasyfikacja regułowa
+│   ├── L5_cnn_3_class_better.py    ← L5: Transfer learning MobileNetV2 (3 klasy)
+|   └── run_pipeline_moreinfo_3class_better.py <- Pipeline łączący L3 z L5
 ├── raport_koncowy_3class_better.html ← raport modelu z transfer learningiem
-├── sprawozdanie.html               ← pełne sprawozdanie projektu
 ├── requirements.txt
 └── README.md
 ```
@@ -75,7 +70,8 @@ opencv-python==4.9.0.80
 scikit-image==0.22.0
 pandas==2.2.1
 tensorflow>=2.13
-scikit-learn
+scikit-learn>=1.3
+seaborn>=0.13
 ```
 
 > 💡 Projekt był rozwijany w środowisku **PyCharm** na Windows. TensorFlow GPU nie jest obsługiwany natywnie na Windows dla wersji >= 2.11 – użyj WSL2 lub CPU.
@@ -99,17 +95,15 @@ python src/L2_przetwarzanie.py
 # 4. Segmentacja i klasyfikacja regułowa (L3)
 python src/L3_pomiary.py
 
-# 5. CNN – model naiwny (bez ważenia)
-python src/L5_cnn_unweighted.py
+# 4. Segmentacja i klasyfikacja regułowa (L3) - wersja poprawiona, dodane bounding boxes
+python src/L3_pomiary.py
 
-# 6. CNN – model ważony (wagi klas)
-python src/L5_cnn_weighted.py
-
-# 7. CNN – model 3-klasowy (oversampling)
-python src/L5_cnn_3_class.py
-
-# 8. Transfer learning – MobileNetV2 (3 klasy)
+# 5. Transfer learning – MobileNetV2 (3 klasy)
 python src/L5_cnn_3_class_better.py
+
+
+# 6. Pipeline - uruchamia automatycznie L3 i L5 i generuje raport porównujący metodę regułową z CNN
+python src/run_pipeline_moreinfo_3class_better.py
 ```
 
 ---
@@ -130,6 +124,7 @@ Modele `.keras` nie są przechowywane w repozytorium ze względu na rozmiar. Aby
 ---
 
 ## Wyniki (skrót)
+Przed stworzeniem finalnego modelu z L5, przeszłam przez kilka kolejnych wersji:
 
 | Model | Podejście | Accuracy (test) | Macro F1 |
 |-------|-----------|----------------|----------|
@@ -141,7 +136,7 @@ Modele `.keras` nie są przechowywane w repozytorium ze względu na rozmiar. Aby
 
 *Model naiwny klasyfikuje prawie wszystko jako NEUTROPHIL – accuracy jest złudna.
 
-Szczegółowe wyniki, macierze pomyłek i wnioski znajdują się w pliku `sprawozdanie.html`.
+
 
 ---
 
