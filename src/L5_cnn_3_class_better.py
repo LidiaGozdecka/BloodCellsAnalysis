@@ -24,7 +24,7 @@ labels_csv_path = os.path.normpath(os.path.join(script_dir, "..", "data", "raw",
 
 IMG_HEIGHT, IMG_WIDTH = 128, 128
 BATCH_SIZE = 32
-EPOCHS = 25  # Modele pre-trenowane uczą się znacznie szybciej, 25 epok w zupełności wystarczy
+EPOCHS = 25  # Modele pre-trenowane uczą się znacznie szybciej ergo 25 epok mi starczy
 
 print("--- L5 (3-KLASY): BIOLOGICZNA FUZJA KLAS ---")
 df_labels = pd.read_csv(labels_csv_path)
@@ -85,13 +85,13 @@ test_gen = val_test_datagen.flow_from_dataframe(dataframe=df_test, directory=ima
 num_classes = len(train_gen.class_indices)
 
 print("\n--- L5 (3-KLASY): INICJALIZACJA TRANSFER LEARNING (MobileNetV2) ---")
-# Importujemy gotową, potężną sieć przeszkoloną na ImageNet
+# Importuje gotowa siec przeszkolona na ImageNet
 base_model = MobileNetV2(input_shape=(IMG_HEIGHT, IMG_WIDTH, 3), include_top=False, weights='imagenet')
 
-# Zamrażamy warstwy bazowe - nie pozwalamy im na zmianę wag, bo już potrafią świetnie widzieć
+# Zamrażam warstwy bazowe - nie pozwalam im na zmianę wag, bo już potrafią świetnie widzieć
 base_model.trainable = False
 
-# Budujemy nowy klasyfikator dedykowany dla Twoich krwinek
+# Budowa nowego klasyfikatora dedykowanego krwinkowm
 inputs = Input(shape=(IMG_HEIGHT, IMG_WIDTH, 3))
 x = base_model(inputs, training=False)
 x = GlobalAveragePooling2D()(x)
@@ -101,7 +101,7 @@ outputs = Dense(num_classes, activation='softmax')(x)
 
 model = Model(inputs, outputs)
 
-# Używamy małego learning rate, by precyzyjnie dostroić nasz klasyfikator
+# Używam małego learning rate, by precyzyjnie dostroić nasz klasyfikator
 model.compile(optimizer=Adam(learning_rate=0.0001), loss='categorical_crossentropy', metrics=['accuracy'])
 
 print("\n--- L5 (3-KLASY): TRENING SIECI NEURONOWEJ ---")
@@ -151,3 +151,4 @@ plt.close()
 print("\n================ RAPORT KLASYFIKACJI / METRYKI (L5 - 3 KLASY) ================")
 print(classification_report(true_classes, predicted_classes, target_names=class_labels, zero_division=0))
 print("========================================================================")
+

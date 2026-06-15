@@ -67,7 +67,7 @@ for file_name in all_files:
         num_labels, _ = cv2.connectedComponents(np.uint8(peaks))
         lobes = max(1, num_labels - 1)
 
-        # --- REGUŁY DECYZYJNE DLA OFICJALNYCH 4 KLAS ---
+        # --- REGUŁY DECYZYJNE DLA OFICJALNYCH 4 KLAS --
         if len(props_red) > 0:
             detected_type = "EOSINOPHIL"
             eosinophil_list.append({"Plik": file_name, "Pole [px]": area, "Obwod [px]": round(perimeter, 1),
@@ -89,7 +89,7 @@ for file_name in all_files:
 
     classical_predictions[file_name] = detected_type
 
-# Tworzenie 4 poprawnych DataFrame'ów
+# Tworzenie 4 poprawnych dataframes
 df_neutrophils = pd.DataFrame(neutrophil_list)
 df_eosinophils = pd.DataFrame(eosinophil_list)
 df_monocytes = pd.DataFrame(monocyte_list)
@@ -114,7 +114,7 @@ if os.path.exists(labels_csv_path):
 
     for _, row in df_labels.iterrows():
         true_cat = str(row[cat_col]).upper().strip()
-        # Ignorujemy bazofile w ewaluacji końcowej
+        # w ewaluacji końcowej ignoruję bazofile
         if true_cat == "BASOPHIL":
             continue
 
@@ -130,7 +130,7 @@ if os.path.exists(labels_csv_path):
     print(f"2) KLASYFIKACJA TYPÓW (Accuracy): {(correct_type_count / total_rows) * 100 :.2f}%")
     print(f"=================================================")
 
-    # --- GRAFICZNA MACIERZ POMYŁEK (L3) ---
+    # ----- GRAFICZNA MACIERZ POMYŁEK (L3) -----
     import seaborn as sns
     from sklearn.metrics import confusion_matrix, classification_report
 
@@ -149,7 +149,7 @@ if os.path.exists(labels_csv_path):
     cm_labels = sorted(l3_classes)
     cm = confusion_matrix(y_true, y_pred, labels=cm_labels)
 
-    # Tworzenie wykresu kaflowego (Seaborn Heatmap)
+    # wykres kafelkowy za pomoca seaborn
     plt.figure(figsize=(8, 6))
     sns.heatmap(cm, annot=True, fmt='d', cmap='Blues',
                 xticklabels=cm_labels, yticklabels=cm_labels)
@@ -157,7 +157,7 @@ if os.path.exists(labels_csv_path):
     plt.ylabel('Rzeczywista klasa')
     plt.xlabel('Predykcja')
 
-    # Zapisujemy na dysk jako osobny plik (Ważne dla pipeline!)
+    # zapisuje na dysk jako osobny pipeline
     plt.savefig(os.path.join(script_dir, "macierz_pomylek_l3.png"), bbox_inches='tight', dpi=150)
     plt.close()
 

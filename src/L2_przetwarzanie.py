@@ -32,30 +32,30 @@ img_laplacian = np.uint8(np.absolute(img_laplacian_raw))
 # Filtr medianowy (opcjonalny czwarty filtr – usuwa szum "sól i pieprz")
 img_median = cv2.medianBlur(img_gray, 5)
 
-# ── WIZUALIZACJA: zmień plt.figure i wszystkie numery subplotów ─────────
-plt.figure(figsize=(16, 8))  # ← było (12,10), teraz szerzej na 6 paneli
+# ── WIZUALIZACJA ──
+plt.figure(figsize=(16, 8))
 
-plt.subplot(2, 3, 1)          # ← było (2,2,1)
+plt.subplot(2, 3, 1)
 plt.imshow(img_gray, cmap='gray')
 plt.title("1. Oryginał w skali szarości")
 plt.axis('off')
 
-plt.subplot(2, 3, 2)          # ← było (2,2,2)
+plt.subplot(2, 3, 2)
 plt.imshow(img_blur, cmap='gray')
 plt.title("2. Filtr Gaussa\n(wygładzenie, σ=auto, maska 5×5)")
 plt.axis('off')
 
-plt.subplot(2, 3, 3)          # ← było (2,2,3)
+plt.subplot(2, 3, 3)
 plt.imshow(img_sobel, cmap='gray')
 plt.title("3. Filtr Sobela\n(krawędzie kierunkowe X+Y)")
 plt.axis('off')
 
-plt.subplot(2, 3, 4)          # ← było (2,2,4)
+plt.subplot(2, 3, 4)
 plt.imshow(img_thresh, cmap='gray')
 plt.title("4. Progowanie Otsu\n(obraz binarny, THRESH_BINARY_INV)")
 plt.axis('off')
 
-# ── NOWE subploty 5 i 6 ───────────────────────────────────────────────
+
 plt.subplot(2, 3, 5)
 plt.imshow(img_laplacian, cmap='gray')
 plt.title("5. Filtr Laplacjana\n(krawędzie wielokierunkowe, ksize=3)")
@@ -65,7 +65,6 @@ plt.subplot(2, 3, 6)
 plt.imshow(img_median, cmap='gray')
 plt.title("6. Filtr medianowy\n(redukcja szumu sól-i-pieprz, ksize=5)")
 plt.axis('off')
-# ──────────────────────────────────────────────────────────────────────
 
 plt.tight_layout()
 plt.show()

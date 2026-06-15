@@ -99,7 +99,7 @@ monocyte_list    = []
 lymphocyte_list  = []
 
 classical_predictions = {}
-# Słownik do wizualizacji: file_name → dane geometryczne + typ
+#oguem file_name → dane geometryczne + typ
 vis_data = {}
 
 all_files = sorted([f for f in os.listdir(images_dir)
@@ -128,7 +128,7 @@ for file_name in all_files:
         minr, minc, maxr, maxc = main_obj.bbox
         centroid_r, centroid_c = main_obj.centroid
 
-        # Liczba płatów jądra (transformata dystansowa → connected components)
+        # Liczba płatów jądra (transformata dystansowa --> connected components)
         crop = mask_nucleus[minr:maxr, minc:maxc]
         dist = cv2.distanceTransform(np.uint8(crop > 0), cv2.DIST_L2, 5)
         thresh_val = 0.45 * dist.max() if dist.max() > 0 else 0
@@ -165,9 +165,8 @@ for file_name in all_files:
 
         elif circularity >= 0.68 and area < 9000:
             # Poluzowane progi: było >=0.75 i <7500
-            # Uzasadnienie: limfocyty mają okrągłe jądra (0.68–1.0)
-            # i małą powierzchnię; zaostrzony próg 0.75 wykluczał
-            # limfocyty z lekko nieregularną membraną
+            # Uzasadnienie: limfocyty mają okrągłe jądra (0.68–1.0)  i małą powierzchnię;
+            # zaostrzony próg 0.75 wyklucza limfocyty z lekko nieregularną membraną
             detected_type = "LYMPHOCYTE"
             lymphocyte_list.append({
                 "Plik": file_name, "Pole [px]": area,
@@ -185,7 +184,7 @@ for file_name in all_files:
                 "BBox": f"[{minc},{minr},{maxc},{maxr}]",
                 "Centroid": f"({centroid_c:.0f},{centroid_r:.0f})"})
 
-        # Zachowaj dane do wizualizacji
+        # Zachowuje dane do wizualizacji
         vis_data[file_name] = {
             "type": detected_type,
             "bbox": (minr, minc, maxr, maxc),
@@ -198,7 +197,7 @@ for file_name in all_files:
     classical_predictions[file_name] = detected_type
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 4. TABELA WYNIKÓW (wymóg: co najmniej 10 obiektów)
+# 4. TABELA WYNIKÓW
 # ─────────────────────────────────────────────────────────────────────────────
 df_neutrophils  = pd.DataFrame(neutrophil_list)
 df_eosinophils  = pd.DataFrame(eosinophil_list)
@@ -222,7 +221,7 @@ for rec in lymphocyte_list:
 
 df_all = pd.DataFrame(all_records)
 
-# Wybierz po max 3 z każdej klasy → ~10-12 wierszy w tabeli wynikowej
+# Wybieram po max 3 z kazdej klasy
 df_sample = (df_all.groupby("Klasa", group_keys=False)
              .apply(lambda g: g.head(3))
              .reset_index(drop=True))
@@ -243,7 +242,7 @@ COLOR_MAP = {
     "UNKNOWN":     (128, 128, 128),   # szary
 }
 
-# Wybierz po 2 przykłady z każdej klasy (jeśli dostępne)
+# po 2 przykłady z każdej klasy - jesli sa dostepne
 examples = {}
 for fname, vd in vis_data.items():
     t = vd["type"]
