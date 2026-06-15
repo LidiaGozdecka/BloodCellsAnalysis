@@ -1,95 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="c76cae87-4f6c-41ac-ac08-64372f89ba29" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/raport_koncowy_3class_better.html" beforeDir="false" afterPath="$PROJECT_DIR$/raport_koncowy_3class_better.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/L3_pomiary_better.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/L3_pomiary_better.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/L5_cnn_3_class_better.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/L5_cnn_3_class_better.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/L5_cnn_unweighted.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/L5_cnn_unweighted.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/L5_cnn_weighted.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/L5_cnn_weighted.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/krzywe_uczenia_cnn_l5_3class.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/krzywe_uczenia_cnn_l5_3class.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/macierz_pomylek_cnn_l5_3class.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/macierz_pomylek_cnn_l5_3class.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/macierz_pomylek_l3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/macierz_pomylek_l3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/run_pipeline_moreinfo_3class_bad.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/run_pipeline_moreinfo_3class_bad.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/run_pipeline_moreinfo_unweighted.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/run_pipeline_moreinfo_unweighted.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/run_pipeline_moreinfo_weighted.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/run_pipeline_moreinfo_weighted.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="HTML File" />
-        <option value="Python Script" />
-      </list>
-    </option>
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 4
-}</component>
-  <component name="ProjectId" id="3F7zGiLyufm4zzVUHRa3VCkKjDw" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.L1_akwizycja.executor": "Run",
-    "Python.L1_dyskretyzacja.executor": "Run",
-    "Python.L2_przetwarzanie.executor": "Run",
-    "Python.L3_pomiary.executor": "Run",
-    "Python.L3_pomiary01.executor": "Run",
-    "Python.L3_pomiary_better.executor": "Run",
-    "Python.L5_cnn.executor": "Run",
-    "Python.L5_cnn_3_class.executor": "Run",
-    "Python.L5_cnn_unweighted.executor": "Run",
-    "Python.run_pipeline.executor": "Run",
-    "Python.run_pipeline_moreinfo.executor": "Run",
-    "Python.run_pipeline_moreinfo_3class.executor": "Run",
-    "Python.run_pipeline_moreinfo_3class_better.executor": "Run",
-    "Python.run_pipeline_moreinfo_unweighted.executor": "Run",
-    "Python.run_pipeline_moreinfo_weighted.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Merging main",
-    "last_opened_file_path": "C:/moje/IAD/6_semestr/analiza_obrazu/projekt/src"
-  }
-}]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\moje\IAD\6_semestr\analiza_obrazu\projekt\src" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\moje\IAD\6_semestr\analiza_obrazu\projekt\data\raw" />
-    </key>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-python-sdk-dfff61a61320-9cdd278e9d02-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-251.25410.159" />
-      </set>
-    </attachedChunks>
-  </component>
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="c76cae87-4f6c-41ac-ac08-64372f89ba29" name="Changes" comment="" />
-      <created>1781440801908</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1781440801908</updated>
-    </task>
     <servers />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/L5_cnn_3_class_better.py</url>
-          <line>63</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
