@@ -27,7 +27,7 @@
 </head>
 <body>
 <div class="container">
-    <h1>🔬 Zintegrowany Raport Analityczny: Optymalizacja 3-Klasowa</h1>
+    <h1>Zintegrowany Raport Analityczny: Optymalizacja 3-Klasowa</h1>
 
     <div class="section">
         <h2>1. Opis i Zmiana Założeń Projektu (Biologiczna Konsolidacja Klas)</h2>
@@ -67,7 +67,7 @@ weighted avg       0.61      0.56      0.55       347
 
         <h3>Wizualizacja Wyników Klasycznych:</h3>
         <div style="display: flex; gap: 20px; wrap: wrap; justify-content: center;">
-            <p class="error-msg">⚠️ Nie znaleziono pliku segmentacja_klasyczna_l3.png</p>
+            <div class="card"><img src="src/segmentacja_klasyczna_l3.png" alt="Wykres L3"></div>
             <div class="card"><h4>Graficzna Macierz Pomyłek - L3</h4><img src="src/macierz_pomylek_l3.png" alt="Macierz L3"></div>
         </div>
     </div>
@@ -76,9 +76,9 @@ weighted avg       0.61      0.56      0.55       347
         <h2>3. Zoptymalizowana Sieć CNN (L5) - Wyniki dla 3 Klas po Fuzji</h2>
         <p>Architektura sieci splotowej trenowana na zbalansowanych wagach dla 3 skonsolidowanych grup diagnostycznych (Neutrofile, Eozynofile, Agranulocyty):</p>
         <pre>WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
-I0000 00:00:1781462115.087530   29176 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1781531091.371413   24028 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
 WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
-I0000 00:00:1781462121.109246   29176 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1781531104.907649   24028 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
 --- L5 (3-KLASY): BIOLOGICZNA FUZJA KLAS ---
 
 [INFO] Równoważenie zbioru treningowego przez Oversampling...
@@ -88,134 +88,78 @@ Found 52 validated image filenames belonging to 3 classes.
 Found 53 validated image filenames belonging to 3 classes.
 
 --- L5 (3-KLASY): INICJALIZACJA TRANSFER LEARNING (MobileNetV2) ---
-I0000 00:00:1781462122.869330   29176 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+I0000 00:00:1781531107.439291   24028 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
 To enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
-Downloading data from https://storage.googleapis.com/tensorflow/keras-applications/mobilenet_v2/mobilenet_v2_weights_tf_dim_ordering_tf_kernels_1.0_128_no_top.h5
-
-[1m      0/9406464[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m0s[0m 0s/step
-[1m  24576/9406464[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m19s[0m 2us/step
-[1m  49152/9406464[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m20s[0m 2us/step
-[1m  81920/9406464[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m24s[0m 3us/step
-[1m 147456/9406464[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m17s[0m 2us/step
-[1m 212992/9406464[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m14s[0m 2us/step
-[1m 262144/9406464[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m13s[0m 1us/step
-[1m 368640/9406464[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m11s[0m 1us/step
-[1m 475136/9406464[0m [32m━[0m[37m━━━━━━━━━━━━━━━━━━━[0m [1m9s[0m 1us/step 
-[1m 581632/9406464[0m [32m━[0m[37m━━━━━━━━━━━━━━━━━━━[0m [1m8s[0m 1us/step
-[1m 720896/9406464[0m [32m━[0m[37m━━━━━━━━━━━━━━━━━━━[0m [1m8s[0m 1us/step
-[1m 761856/9406464[0m [32m━[0m[37m━━━━━━━━━━━━━━━━━━━[0m [1m8s[0m 1us/step
-[1m 876544/9406464[0m [32m━[0m[37m━━━━━━━━━━━━━━━━━━━[0m [1m7s[0m 1us/step
-[1m 991232/9406464[0m [32m━━[0m[37m━━━━━━━━━━━━━━━━━━[0m [1m7s[0m 1us/step
-[1m1228800/9406464[0m [32m━━[0m[37m━━━━━━━━━━━━━━━━━━[0m [1m6s[0m 1us/step
-[1m1343488/9406464[0m [32m━━[0m[37m━━━━━━━━━━━━━━━━━━[0m [1m5s[0m 1us/step
-[1m1556480/9406464[0m [32m━━━[0m[37m━━━━━━━━━━━━━━━━━[0m [1m5s[0m 1us/step
-[1m1818624/9406464[0m [32m━━━[0m[37m━━━━━━━━━━━━━━━━━[0m [1m4s[0m 1us/step
-[1m2080768/9406464[0m [32m━━━━[0m[37m━━━━━━━━━━━━━━━━[0m [1m4s[0m 1us/step
-[1m2285568/9406464[0m [32m━━━━[0m[37m━━━━━━━━━━━━━━━━[0m [1m3s[0m 1us/step
-[1m2531328/9406464[0m [32m━━━━━[0m[37m━━━━━━━━━━━━━━━[0m [1m3s[0m 0us/step
-[1m2793472/9406464[0m [32m━━━━━[0m[37m━━━━━━━━━━━━━━━[0m [1m3s[0m 0us/step
-[1m3022848/9406464[0m [32m━━━━━━[0m[37m━━━━━━━━━━━━━━[0m [1m2s[0m 0us/step
-[1m3235840/9406464[0m [32m━━━━━━[0m[37m━━━━━━━━━━━━━━[0m [1m2s[0m 0us/step
-[1m3497984/9406464[0m [32m━━━━━━━[0m[37m━━━━━━━━━━━━━[0m [1m2s[0m 0us/step
-[1m3743744/9406464[0m [32m━━━━━━━[0m[37m━━━━━━━━━━━━━[0m [1m2s[0m 0us/step
-[1m3973120/9406464[0m [32m━━━━━━━━[0m[37m━━━━━━━━━━━━[0m [1m2s[0m 0us/step
-[1m4153344/9406464[0m [32m━━━━━━━━[0m[37m━━━━━━━━━━━━[0m [1m2s[0m 0us/step
-[1m4235264/9406464[0m [32m━━━━━━━━━[0m[37m━━━━━━━━━━━[0m [1m2s[0m 0us/step
-[1m4448256/9406464[0m [32m━━━━━━━━━[0m[37m━━━━━━━━━━━[0m [1m2s[0m 0us/step
-[1m4759552/9406464[0m [32m━━━━━━━━━━[0m[37m━━━━━━━━━━[0m [1m1s[0m 0us/step
-[1m5005312/9406464[0m [32m━━━━━━━━━━[0m[37m━━━━━━━━━━[0m [1m1s[0m 0us/step
-[1m5201920/9406464[0m [32m━━━━━━━━━━━[0m[37m━━━━━━━━━[0m [1m1s[0m 0us/step
-[1m5431296/9406464[0m [32m━━━━━━━━━━━[0m[37m━━━━━━━━━[0m [1m1s[0m 0us/step
-[1m5677056/9406464[0m [32m━━━━━━━━━━━━[0m[37m━━━━━━━━[0m [1m1s[0m 0us/step
-[1m5873664/9406464[0m [32m━━━━━━━━━━━━[0m[37m━━━━━━━━[0m [1m1s[0m 0us/step
-[1m6135808/9406464[0m [32m━━━━━━━━━━━━━[0m[37m━━━━━━━[0m [1m1s[0m 0us/step
-[1m6299648/9406464[0m [32m━━━━━━━━━━━━━[0m[37m━━━━━━━[0m [1m1s[0m 0us/step
-[1m6529024/9406464[0m [32m━━━━━━━━━━━━━[0m[37m━━━━━━━[0m [1m1s[0m 0us/step
-[1m6709248/9406464[0m [32m━━━━━━━━━━━━━━[0m[37m━━━━━━[0m [1m0s[0m 0us/step
-[1m6922240/9406464[0m [32m━━━━━━━━━━━━━━[0m[37m━━━━━━[0m [1m0s[0m 0us/step
-[1m7135232/9406464[0m [32m━━━━━━━━━━━━━━━[0m[37m━━━━━[0m [1m0s[0m 0us/step
-[1m7364608/9406464[0m [32m━━━━━━━━━━━━━━━[0m[37m━━━━━[0m [1m0s[0m 0us/step
-[1m7561216/9406464[0m [32m━━━━━━━━━━━━━━━━[0m[37m━━━━[0m [1m0s[0m 0us/step
-[1m7692288/9406464[0m [32m━━━━━━━━━━━━━━━━[0m[37m━━━━[0m [1m0s[0m 0us/step
-[1m7774208/9406464[0m [32m━━━━━━━━━━━━━━━━[0m[37m━━━━[0m [1m0s[0m 0us/step
-[1m8085504/9406464[0m [32m━━━━━━━━━━━━━━━━━[0m[37m━━━[0m [1m0s[0m 0us/step
-[1m8265728/9406464[0m [32m━━━━━━━━━━━━━━━━━[0m[37m━━━[0m [1m0s[0m 0us/step
-[1m8577024/9406464[0m [32m━━━━━━━━━━━━━━━━━━[0m[37m━━[0m [1m0s[0m 0us/step
-[1m8790016/9406464[0m [32m━━━━━━━━━━━━━━━━━━[0m[37m━━[0m [1m0s[0m 0us/step
-[1m8970240/9406464[0m [32m━━━━━━━━━━━━━━━━━━━[0m[37m━[0m [1m0s[0m 0us/step
-[1m9150464/9406464[0m [32m━━━━━━━━━━━━━━━━━━━[0m[37m━[0m [1m0s[0m 0us/step
-[1m9314304/9406464[0m [32m━━━━━━━━━━━━━━━━━━━[0m[37m━[0m [1m0s[0m 0us/step
-[1m9406464/9406464[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m3s[0m 0us/step
 WARNING:tensorflow:TensorFlow GPU support is not available on native Windows for TensorFlow >= 2.11. Even if CUDA/cuDNN are installed, GPU will not be used. Please use WSL2 or the TensorFlow-DirectML plugin.
 
 --- L5 (3-KLASY): TRENING SIECI NEURONOWEJ ---
 Epoch 1/25
-14/14 - 15s - 1s/step - accuracy: 0.3472 - loss: 1.6288 - val_accuracy: 0.2885 - val_loss: 1.4969
+14/14 - 15s - 1s/step - accuracy: 0.3287 - loss: 1.3625 - val_accuracy: 0.1923 - val_loss: 1.3904
 Epoch 2/25
-14/14 - 5s - 355ms/step - accuracy: 0.4097 - loss: 1.2343 - val_accuracy: 0.4615 - val_loss: 1.2104
+14/14 - 6s - 420ms/step - accuracy: 0.3773 - loss: 1.2507 - val_accuracy: 0.3846 - val_loss: 1.0504
 Epoch 3/25
-14/14 - 5s - 339ms/step - accuracy: 0.4144 - loss: 1.1662 - val_accuracy: 0.4423 - val_loss: 1.0792
+14/14 - 6s - 398ms/step - accuracy: 0.4097 - loss: 1.1564 - val_accuracy: 0.3654 - val_loss: 1.0705
 Epoch 4/25
-14/14 - 5s - 332ms/step - accuracy: 0.4329 - loss: 1.1432 - val_accuracy: 0.4423 - val_loss: 1.0347
+14/14 - 5s - 378ms/step - accuracy: 0.4861 - loss: 1.0822 - val_accuracy: 0.4231 - val_loss: 1.0356
 Epoch 5/25
-14/14 - 5s - 331ms/step - accuracy: 0.4514 - loss: 1.0595 - val_accuracy: 0.4423 - val_loss: 1.0569
+14/14 - 7s - 507ms/step - accuracy: 0.4838 - loss: 1.0324 - val_accuracy: 0.5769 - val_loss: 0.9347
 Epoch 6/25
-14/14 - 5s - 328ms/step - accuracy: 0.5000 - loss: 1.0553 - val_accuracy: 0.5000 - val_loss: 0.9831
+14/14 - 5s - 366ms/step - accuracy: 0.4977 - loss: 1.0233 - val_accuracy: 0.5192 - val_loss: 0.9534
 Epoch 7/25
-14/14 - 5s - 334ms/step - accuracy: 0.5208 - loss: 0.9900 - val_accuracy: 0.5000 - val_loss: 0.9541
+14/14 - 5s - 375ms/step - accuracy: 0.5069 - loss: 1.0032 - val_accuracy: 0.5577 - val_loss: 0.9341
 Epoch 8/25
-14/14 - 5s - 329ms/step - accuracy: 0.5532 - loss: 0.9309 - val_accuracy: 0.5192 - val_loss: 0.9502
+14/14 - 5s - 385ms/step - accuracy: 0.5347 - loss: 0.9577 - val_accuracy: 0.5385 - val_loss: 0.9174
 Epoch 9/25
-14/14 - 5s - 340ms/step - accuracy: 0.5417 - loss: 0.9430 - val_accuracy: 0.6154 - val_loss: 0.8770
+14/14 - 5s - 362ms/step - accuracy: 0.5509 - loss: 0.9441 - val_accuracy: 0.5192 - val_loss: 0.9182
 Epoch 10/25
-14/14 - 5s - 334ms/step - accuracy: 0.5671 - loss: 0.9133 - val_accuracy: 0.5577 - val_loss: 0.8949
+14/14 - 5s - 375ms/step - accuracy: 0.5671 - loss: 0.9330 - val_accuracy: 0.6346 - val_loss: 0.8863
 Epoch 11/25
-14/14 - 5s - 349ms/step - accuracy: 0.5995 - loss: 0.8767 - val_accuracy: 0.5769 - val_loss: 0.8882
+14/14 - 6s - 409ms/step - accuracy: 0.5741 - loss: 0.8722 - val_accuracy: 0.6346 - val_loss: 0.8737
 Epoch 12/25
-14/14 - 5s - 336ms/step - accuracy: 0.5764 - loss: 0.8979 - val_accuracy: 0.5962 - val_loss: 0.8532
+14/14 - 5s - 391ms/step - accuracy: 0.5671 - loss: 0.8923 - val_accuracy: 0.6346 - val_loss: 0.8769
 Epoch 13/25
-14/14 - 5s - 331ms/step - accuracy: 0.6019 - loss: 0.8454 - val_accuracy: 0.5962 - val_loss: 0.8862
+14/14 - 5s - 334ms/step - accuracy: 0.5995 - loss: 0.8772 - val_accuracy: 0.5769 - val_loss: 0.8736
 Epoch 14/25
-14/14 - 5s - 335ms/step - accuracy: 0.5926 - loss: 0.8799 - val_accuracy: 0.5962 - val_loss: 0.8572
+14/14 - 5s - 353ms/step - accuracy: 0.6042 - loss: 0.8689 - val_accuracy: 0.6154 - val_loss: 0.8772
 Epoch 15/25
-14/14 - 5s - 335ms/step - accuracy: 0.6157 - loss: 0.8298 - val_accuracy: 0.5962 - val_loss: 0.8474
+14/14 - 5s - 351ms/step - accuracy: 0.6343 - loss: 0.8231 - val_accuracy: 0.6923 - val_loss: 0.8373
 Epoch 16/25
-14/14 - 5s - 331ms/step - accuracy: 0.6296 - loss: 0.8373 - val_accuracy: 0.5962 - val_loss: 0.8490
+14/14 - 5s - 329ms/step - accuracy: 0.5995 - loss: 0.8497 - val_accuracy: 0.6923 - val_loss: 0.8230
 Epoch 17/25
-14/14 - 5s - 333ms/step - accuracy: 0.6273 - loss: 0.8108 - val_accuracy: 0.5962 - val_loss: 0.8494
+14/14 - 5s - 333ms/step - accuracy: 0.5972 - loss: 0.8442 - val_accuracy: 0.6538 - val_loss: 0.8130
 Epoch 18/25
-14/14 - 5s - 336ms/step - accuracy: 0.6296 - loss: 0.8489 - val_accuracy: 0.5962 - val_loss: 0.8525
+14/14 - 7s - 479ms/step - accuracy: 0.6157 - loss: 0.8320 - val_accuracy: 0.6538 - val_loss: 0.8163
 Epoch 19/25
-14/14 - 5s - 329ms/step - accuracy: 0.6296 - loss: 0.8026 - val_accuracy: 0.5577 - val_loss: 0.8813
+14/14 - 5s - 355ms/step - accuracy: 0.6644 - loss: 0.7928 - val_accuracy: 0.6346 - val_loss: 0.8597
 Epoch 20/25
-14/14 - 5s - 333ms/step - accuracy: 0.6782 - loss: 0.7821 - val_accuracy: 0.6154 - val_loss: 0.8590
+14/14 - 5s - 347ms/step - accuracy: 0.6481 - loss: 0.7616 - val_accuracy: 0.6731 - val_loss: 0.8248
 Epoch 21/25
-14/14 - 5s - 330ms/step - accuracy: 0.6366 - loss: 0.8149 - val_accuracy: 0.5385 - val_loss: 0.8503
+14/14 - 5s - 341ms/step - accuracy: 0.6505 - loss: 0.8013 - val_accuracy: 0.6923 - val_loss: 0.8172
 Epoch 22/25
-14/14 - 5s - 332ms/step - accuracy: 0.6597 - loss: 0.7762 - val_accuracy: 0.5962 - val_loss: 0.8855
+14/14 - 5s - 353ms/step - accuracy: 0.6412 - loss: 0.8020 - val_accuracy: 0.6538 - val_loss: 0.8277
 Epoch 23/25
-14/14 - 5s - 334ms/step - accuracy: 0.6389 - loss: 0.7825 - val_accuracy: 0.5962 - val_loss: 0.8466
+14/14 - 5s - 360ms/step - accuracy: 0.6690 - loss: 0.7474 - val_accuracy: 0.6538 - val_loss: 0.8212
 Epoch 24/25
-14/14 - 5s - 338ms/step - accuracy: 0.6713 - loss: 0.7594 - val_accuracy: 0.5577 - val_loss: 0.8642
+14/14 - 5s - 341ms/step - accuracy: 0.6412 - loss: 0.7936 - val_accuracy: 0.6346 - val_loss: 0.8169
 Epoch 25/25
-14/14 - 5s - 332ms/step - accuracy: 0.7037 - loss: 0.7334 - val_accuracy: 0.5769 - val_loss: 0.8711
+14/14 - 5s - 373ms/step - accuracy: 0.6944 - loss: 0.7497 - val_accuracy: 0.6538 - val_loss: 0.8404
 
 --- L5 (3-KLASY): GENEROWANIE PREDYKCJI I METRYK FINALNYCH ---
 
-[1m1/2[0m [32m━━━━━━━━━━[0m[37m━━━━━━━━━━[0m [1m1s[0m 2s/step
+[1m1/2[0m [32m━━━━━━━━━━[0m[37m━━━━━━━━━━[0m [1m3s[0m 3s/step
 [1m2/2[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 2s/step
-[1m2/2[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m4s[0m 2s/step
+[1m2/2[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m5s[0m 2s/step
 
 ================ RAPORT KLASYFIKACJI / METRYKI (L5 - 3 KLASY) ================
               precision    recall  f1-score   support
 
-  NEUTROPHIL       0.74      0.65      0.69        31
-  EOSINOPHIL       0.35      0.50      0.41        14
-AGRANULOCYTE       0.33      0.25      0.29         8
+  NEUTROPHIL       0.79      0.71      0.75        31
+  EOSINOPHIL       0.38      0.57      0.46        14
+AGRANULOCYTE       0.75      0.38      0.50         8
 
-    accuracy                           0.55        53
-   macro avg       0.47      0.47      0.46        53
-weighted avg       0.58      0.55      0.56        53
+    accuracy                           0.62        53
+   macro avg       0.64      0.55      0.57        53
+weighted avg       0.67      0.62      0.63        53
 
 ========================================================================
 </pre>

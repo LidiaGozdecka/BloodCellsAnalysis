@@ -6,6 +6,8 @@ from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
+from sklearn.utils.class_weight import compute_class_weight
+import numpy as np
 
 import random
 SEED = 2026
@@ -67,9 +69,7 @@ train_gen = train_datagen.flow_from_dataframe(dataframe=df_train, directory=imag
 val_gen = val_test_datagen.flow_from_dataframe(dataframe=df_val, directory=images_dir, x_col='Clean_File', y_col='Class_String', classes=allowed_classes, target_size=(IMG_HEIGHT, IMG_WIDTH), batch_size=BATCH_SIZE, class_mode='categorical', seed=42)
 test_gen = val_test_datagen.flow_from_dataframe(dataframe=df_test, directory=images_dir, x_col='Clean_File', y_col='Class_String', classes=allowed_classes, target_size=(IMG_HEIGHT, IMG_WIDTH), batch_size=BATCH_SIZE, class_mode='categorical', shuffle=False, seed=42)
 
-# --- KROK 1: AUTOMATYCZNE OBLICZANIE WAG KLAS DLA NIEZBALANSOWANEGO DATASETU ---
-from sklearn.utils.class_weight import compute_class_weight
-import numpy as np
+
 
 print("[INFO] Obliczanie wag klas w celu eliminacji dominacji Neutrofili...")
 

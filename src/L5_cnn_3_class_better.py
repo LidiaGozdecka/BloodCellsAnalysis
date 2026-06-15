@@ -66,7 +66,7 @@ df_train = pd.concat(lst, axis=0).sample(frac=1, random_state=42).reset_index(dr
 
 print(f"Zbiory po OVERSAMPLINGU: Trening: {len(df_train)} | Walidacja: {len(df_val)} | Test: {len(df_test)}")
 
-# Augmentacja dostosowana do Transfer Learning
+#augmentacja pod transfer learning
 train_datagen = ImageDataGenerator(
     rescale=1./255,
     rotation_range=30,

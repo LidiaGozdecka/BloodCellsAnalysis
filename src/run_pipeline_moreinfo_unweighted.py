@@ -130,7 +130,7 @@ def generate_html_report(l3_output, l5_output):
 if __name__ == "__main__":
     print("=================== INTEGRACJA POTOKU: MODEL NIEZBALANSOWANY ===================")
 
-    l3_logs = run_script("L3_pomiary.py")
+    l3_logs = run_script("L3_pomiary_better.py")
     l5_logs = run_script("L5_cnn_unweighted.py")
 
     generate_html_report(l3_logs, l5_logs)

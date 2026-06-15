@@ -6,6 +6,10 @@ from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
+import numpy as np
+from sklearn.metrics import confusion_matrix, classification_report
+import pandas as pd
+
 
 import random
 SEED = 2026
@@ -127,12 +131,6 @@ print("[INFO] Wykres krzywych uczenia został zapisany jako 'krzywe_uczenia_cnn_
 
 
 
-# ========================================================================
-# --- BLOK EWALUACJI KOŃCOWEJ (MACIERZ POMYŁEK I METRYKI DLA CNN) --------
-# ========================================================================
-import numpy as np
-from sklearn.metrics import confusion_matrix, classification_report
-import pandas as pd
 
 print("\n--- L5: URUCHAMIANIE PREDYKCJI NA ZBIORZE TESTOWYM ---")
 # Resetujemy generator testowy, aby upewnić się, że czyta próbki od początku

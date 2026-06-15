@@ -37,16 +37,16 @@ upper_red2 = np.array([180, 255, 255])
 
 def segment_nucleus(img_bgr):
     """
-    Dwuetapowa segmentacja jądra komórkowego.
+    2etapowa segmentacja jądra komórkowego.
 
-    Etap 1 – maska fioletowa (Hue 110-165): działa dla neutrofili,
+    e1 – maska fioletowa (Hue 110-165): działa dla neutrofili,
               eozynofilów i monocytów.
-    Etap 2 – jeśli maska fioletowa daje mało pikseli (< 300), dokładamy
+    etap2 – jeśli maska fioletowa daje mało pikseli (< 300), dokładam
               maskę granatową (Hue 100-145, niskie V) przeznaczoną dla
               limfocytów z bardzo ciemnym, zwartym jądrem.
-    Fallback – jeśli suma nadal < 100 px, używamy Otsu na kanale szarości.
+    do tego jeśli suma nadal < 100 px, używam Otsu na kanale szarości.
 
-    Zwraca: (mask_final, mask_red, used_lymph_mask)
+    zwracane: (mask_final, mask_red, used_lymph_mask)
       - mask_final  – maska binarna jądra
       - mask_red    – maska ziarnistości czerwonych (dla eozynofilów)
       - used_lymph  – True jeśli skorzystano z maski limfocytowej
@@ -137,7 +137,7 @@ for file_name in all_files:
         lobes = max(1, num_labels - 1)
 
         # ── REGUŁY DECYZYJNE ──────────────────────────────────────────────
-        # Kolejność ma znaczenie:
+        # Kolejnsic jest znaczaca:
         # 1) Eozynofil: jądro fioletowe + obecność czerwonych ziarnistości
         # 2) Neutrofil: jądro wielopłatowe (lobes>1) lub nieokrągłe (<0.55)
         # 3) Limfocyt:  mała, bardzo okrągła komórka (poluzowane progi
@@ -379,4 +379,4 @@ if os.path.exists(labels_csv_path):
     plt.savefig(os.path.join(script_dir, "macierz_pomylek_l3.png"),
                 bbox_inches="tight", dpi=150)
     plt.show()
-    print("✅ Zapisano: macierz_pomylek_l3.png")
+    print("Zapisano: macierz_pomylek_l3.png")
